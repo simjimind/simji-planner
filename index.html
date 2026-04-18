@@ -93,12 +93,9 @@ textarea.input-full{min-height:110px;resize:vertical;line-height:1.8;}
 .ntag-gemini{background:var(--teal-lt);color:var(--teal);}
 .ntag-self{background:var(--g-lt);color:var(--g-dk);}
 
-/* 노트 AI 필터 버튼 */
-.ai-filter-btn{padding:5px 14px;font-size:13px;font-weight:600;border:1.5px solid var(--border);border-radius:20px;background:var(--card);color:var(--ink3);cursor:pointer;font-family:inherit;transition:all .15s;}
-.ai-filter-btn.active{background:var(--g);border-color:var(--g-dk);color:#fff;}
-.ai-filter-btn[id="nf-claude"].active{background:#d97706;border-color:#92400e;color:#fff;}
-.ai-filter-btn[id="nf-gemini"].active{background:var(--teal);border-color:#0e4a60;color:#fff;}
-.ai-filter-btn[id="nf-self"].active{background:var(--g);border-color:var(--g-dk);color:#fff;}
+/* 노트 섹션 헤더 */
+.note-section-hdr{font-size:12px;font-weight:700;color:var(--ink3);letter-spacing:.06em;padding:10px 0 5px;border-top:1px solid var(--border);margin-top:6px;}
+.note-section-hdr:first-child{border-top:none;margin-top:0;}
 
 /* ── 할일 ── */
 .task-wrapper{margin-bottom:8px;}
@@ -254,14 +251,10 @@ textarea.input-full{min-height:110px;resize:vertical;line-height:1.8;}
     <span class="save-ok" id="noteOk">저장했어요 ✓</span>
   </div>
 
+  <div id="todayNoteList" style="margin-top:12px;"></div>
+
   <button class="past-toggle-btn" id="notePastBtn" onclick="toggleNotePast()" style="display:none;">지난 노트 보기</button>
   <div id="notePastSection" style="display:none;">
-    <div style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 8px;">
-      <button class="ai-filter-btn active" id="nf-all"     onclick="setNoteFilter('all')">전체</button>
-      <button class="ai-filter-btn"        id="nf-claude"  onclick="setNoteFilter('claude')">🤖 클로드</button>
-      <button class="ai-filter-btn"        id="nf-gemini"  onclick="setNoteFilter('gemini')">✨ 제미나이</button>
-      <button class="ai-filter-btn"        id="nf-self"    onclick="setNoteFilter('self')">💭 내 생각</button>
-    </div>
     <div id="noteList" style="margin-top:4px;"></div>
   </div>
 </div>
@@ -423,7 +416,6 @@ function autoResize(el){ el.style.height='auto'; el.style.height=el.scrollHeight
 let noteAiTags = [];
 let noteEntries = [];
 let notePastExpanded = false;
-let noteFilter = 'all';
 
 function toggleAiTag(tag){
   const btn = document.getElementById('aiBtn-' + tag);
@@ -438,74 +430,81 @@ function toggleAiTag(tag){
 
 async function initNotes(){
   noteEntries = (await load('notes2:all')) || [];
-  const today = noteEntries.find(e => e.date === TK);
-  if(today){
-    document.getElementById('noteText').value = today.text || '';
-    noteAiTags = [...(today.aiTags || [])];
-    noteAiTags.forEach(tag => {
-      const btn = document.getElementById('aiBtn-' + tag);
-      if(btn) btn.className = 'ai-tag-btn on-' + tag;
-    });
-    autoResize(document.getElementById('noteText'));
-  }
   renderNoteList();
 }
 
 async function saveNote(){
   const text = document.getElementById('noteText').value.trim();
   if(!text) return;
-  const idx = noteEntries.findIndex(e => e.date === TK);
-  const entry = { date: TK, text, aiTags: [...noteAiTags] };
-  if(idx >= 0) noteEntries[idx] = entry; else noteEntries.unshift(entry);
+  const entry = { id: Date.now(), date: TK, text, aiTags: [...noteAiTags] };
+  noteEntries.unshift(entry);
   await save2('notes2:all', noteEntries);
+  // 입력창 초기화
+  document.getElementById('noteText').value = '';
+  autoResize(document.getElementById('noteText'));
+  noteAiTags = [];
+  ['claude','gemini','self'].forEach(tag => {
+    const btn = document.getElementById('aiBtn-' + tag);
+    if(btn) btn.className = 'ai-tag-btn';
+  });
   renderNoteList();
   flash('noteOk');
 }
 
+function _noteCardHtml(e, isToday){
+  const [y,m,d] = e.date.split('-');
+  const tags = [];
+  if(e.aiTags && e.aiTags.includes('claude'))  tags.push('<span class="ntag ntag-claude">🤖 클로드</span>');
+  if(e.aiTags && e.aiTags.includes('gemini'))  tags.push('<span class="ntag ntag-gemini">✨ 제미나이</span>');
+  if(e.aiTags && e.aiTags.includes('self'))    tags.push('<span class="ntag ntag-self">💭 내 생각</span>');
+  const dateStr = isToday ? '오늘' : `${+y}년 ${+m}월 ${+d}일`;
+  return `<div class="note-card">
+    <div class="note-card-date">${dateStr}</div>
+    <div class="note-card-body">${(e.text||'').slice(0,200)}${(e.text||'').length>200?'…':''}</div>
+    ${tags.length ? `<div class="note-card-tags">${tags.join('')}</div>` : ''}
+  </div>`;
+}
+
 function renderNoteList(){
-  const past = noteEntries.filter(e => e.date !== TK);
-  const btn  = document.getElementById('notePastBtn');
-  const sec  = document.getElementById('notePastSection');
+  const today = noteEntries.filter(e => e.date === TK);
+  const past  = noteEntries.filter(e => e.date !== TK);
+
+  // 오늘 노트 목록
+  const todayList = document.getElementById('todayNoteList');
+  todayList.innerHTML = today.map(e => _noteCardHtml(e, true)).join('');
+
+  // 지난 노트
+  const btn = document.getElementById('notePastBtn');
+  const sec = document.getElementById('notePastSection');
   if(!past.length){ sec.style.display='none'; btn.style.display='none'; return; }
   btn.style.display = 'block';
   sec.style.display = notePastExpanded ? 'block' : 'none';
-  _renderFilteredNotes(past);
+  _renderSections(past);
 }
 
-function _renderFilteredNotes(past){
-  const filtered = noteFilter === 'all'
-    ? past
-    : past.filter(e => e.aiTags && e.aiTags.includes(noteFilter));
-  const list = document.getElementById('noteList');
-  if(!filtered.length){
-    list.innerHTML = '<p style="font-size:14px;color:var(--ink3);padding:8px 0;">해당 태그의 노트가 없어요.</p>';
-    return;
-  }
-  list.innerHTML = `<p style="font-size:13px;color:var(--ink3);font-weight:600;margin-bottom:8px;">지난 노트 ${filtered.length}개</p>`;
-  filtered.slice(0,20).forEach(e => {
-    const [y,m,d] = e.date.split('-');
-    const tags = [];
-    if(e.aiTags && e.aiTags.includes('claude'))  tags.push('<span class="ntag ntag-claude">🤖 클로드</span>');
-    if(e.aiTags && e.aiTags.includes('gemini'))  tags.push('<span class="ntag ntag-gemini">✨ 제미나이</span>');
-    if(e.aiTags && e.aiTags.includes('self'))    tags.push('<span class="ntag ntag-self">💭 내 생각</span>');
-    const card = document.createElement('div');
-    card.className = 'note-card';
-    card.innerHTML = `
-      <div class="note-card-date">${+y}년 ${+m}월 ${+d}일</div>
-      <div class="note-card-body">${(e.text||'').slice(0,200)}${(e.text||'').length>200?'…':''}</div>
-      ${tags.length ? `<div class="note-card-tags">${tags.join('')}</div>` : ''}
-    `;
-    list.appendChild(card);
+function _renderSections(past){
+  const groups = { claude:[], gemini:[], self:[], none:[] };
+  past.forEach(e => {
+    const tags = e.aiTags || [];
+    if(tags.includes('claude'))  groups.claude.push(e);
+    if(tags.includes('gemini'))  groups.gemini.push(e);
+    if(tags.includes('self'))    groups.self.push(e);
+    if(!tags.length)             groups.none.push(e);
   });
-}
-
-function setNoteFilter(f){
-  noteFilter = f;
-  ['all','claude','gemini','self'].forEach(k => {
-    document.getElementById('nf-'+k).classList.toggle('active', k===f);
+  const secs = [
+    { key:'claude', label:'🤖 클로드' },
+    { key:'gemini', label:'✨ 제미나이' },
+    { key:'self',   label:'💭 내 생각' },
+    { key:'none',   label:'📝 태그 없음' },
+  ];
+  let html = '';
+  secs.forEach(({ key, label }) => {
+    const items = groups[key];
+    if(!items.length) return;
+    html += `<div class="note-section-hdr">${label} (${items.length}개)</div>`;
+    html += items.slice(0,20).map(e => _noteCardHtml(e, false)).join('');
   });
-  const past = noteEntries.filter(e => e.date !== TK);
-  _renderFilteredNotes(past);
+  document.getElementById('noteList').innerHTML = html || '<p style="font-size:14px;color:var(--ink3);padding:8px 0;">노트가 없어요.</p>';
 }
 
 function toggleNotePast(){
