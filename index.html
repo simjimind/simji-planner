@@ -75,7 +75,8 @@ textarea.input-full{min-height:110px;resize:vertical;line-height:1.8;}
 .save-ok{font-size:15px;color:var(--g-dk);font-weight:600;margin-left:10px;opacity:0;transition:opacity .3s;}
 
 /* ── 📝 노트 탭 ── */
-.note-textarea{width:100%;min-height:300px;padding:14px;font-size:16px;font-family:inherit;border:1.5px solid var(--border);border-radius:10px;background:var(--card);color:var(--ink);outline:none;line-height:1.9;resize:none;overflow:hidden;margin-bottom:12px;}
+.note-textarea{width:100%;min-height:120px;padding:14px;font-size:16px;font-family:inherit;border:1.5px solid var(--border);border-radius:10px;background:var(--card);color:var(--ink);outline:none;line-height:1.9;resize:none;overflow:hidden;margin-bottom:8px;}
+.note-sec-lbl{font-size:13px;font-weight:700;color:var(--ink2);margin:10px 0 4px;letter-spacing:.04em;}
 .note-textarea:focus{border-color:var(--g);background:#fff;}
 .note-textarea::placeholder{color:var(--ink3);}
 .ai-tag-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
@@ -234,28 +235,24 @@ textarea.input-full{min-height:110px;resize:vertical;line-height:1.8;}
 
 <!-- ───────── 📝 노트 ───────── -->
 <div class="panel" id="panel-note">
-  <div class="strip" id="noteDateLabel"></div>
-
-  <div class="sec-lbl">AI 출처 태그 (복수 선택)</div>
-  <div class="ai-tag-row">
-    <button class="ai-tag-btn" id="aiBtn-claude" onclick="toggleAiTag('claude')">🤖 클로드</button>
-    <button class="ai-tag-btn" id="aiBtn-gemini" onclick="toggleAiTag('gemini')">✨ 제미나이</button>
-    <button class="ai-tag-btn" id="aiBtn-self" onclick="toggleAiTag('self')">💭 내 생각</button>
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+    <button class="nav-btn" onclick="shiftNote(-1)">← 이전</button>
+    <span class="strip" id="noteDateLabel" style="margin:0 8px;flex:1;text-align:center;font-size:15px;"></span>
+    <button class="nav-btn" onclick="shiftNote(1)">다음 →</button>
   </div>
 
-  <textarea class="note-textarea" id="noteText"
-    placeholder="오늘의 아이디어, 메모, 영감을 자유롭게 기록하세요...&#10;흐름이 끊기지 않게, 떠오르는 대로 써내려가요."></textarea>
+  <div class="note-sec-lbl">🤖 클로드</div>
+  <textarea class="note-textarea" id="noteClaude" placeholder="클로드와 나눈 내용, 아이디어..."></textarea>
 
-  <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+  <div class="note-sec-lbl">✨ 제미나이</div>
+  <textarea class="note-textarea" id="noteGemini" placeholder="제미나이와 나눈 내용..."></textarea>
+
+  <div class="note-sec-lbl">💭 내 생각</div>
+  <textarea class="note-textarea" id="noteSelf" placeholder="떠오르는 생각, 메모..."></textarea>
+
+  <div style="display:flex;align-items:center;gap:10px;margin-top:10px;">
     <button class="btn-pri" onclick="saveNote()">저장하기</button>
     <span class="save-ok" id="noteOk">저장했어요 ✓</span>
-  </div>
-
-  <div id="todayNoteList" style="margin-top:12px;"></div>
-
-  <button class="past-toggle-btn" id="notePastBtn" onclick="toggleNotePast()" style="display:none;">지난 노트 보기</button>
-  <div id="notePastSection" style="display:none;">
-    <div id="noteList" style="margin-top:4px;"></div>
   </div>
 </div>
 
@@ -413,107 +410,50 @@ function autoResize(el){ el.style.height='auto'; el.style.height=el.scrollHeight
 /* ══════════════════════════════
    📝 노트 탭
 ══════════════════════════════ */
-let noteAiTags = [];
 let noteEntries = [];
-let notePastExpanded = false;
-
-function toggleAiTag(tag){
-  const btn = document.getElementById('aiBtn-' + tag);
-  if(noteAiTags.includes(tag)){
-    noteAiTags = noteAiTags.filter(t => t !== tag);
-    btn.className = 'ai-tag-btn';
-  } else {
-    noteAiTags.push(tag);
-    btn.className = 'ai-tag-btn on-' + tag;
-  }
-}
+let noteViewDate = TK;
 
 async function initNotes(){
   noteEntries = (await load('notes2:all')) || [];
-  renderNoteList();
+  renderNoteForm();
+}
+
+function renderNoteForm(){
+  const [y,m,d] = noteViewDate.split('-');
+  const isToday = noteViewDate === TK;
+  document.getElementById('noteDateLabel').textContent =
+    isToday ? `📝 ${todayStr} 노트` : `📝 ${+y}년 ${+m}월 ${+d}일 노트`;
+  const entry = noteEntries.find(e => e.date === noteViewDate) || {};
+  document.getElementById('noteClaude').value = entry.claude || '';
+  document.getElementById('noteGemini').value = entry.gemini || '';
+  document.getElementById('noteSelf').value   = entry.self   || '';
+  ['noteClaude','noteGemini','noteSelf'].forEach(id => autoResize(document.getElementById(id)));
 }
 
 async function saveNote(){
-  const text = document.getElementById('noteText').value.trim();
-  if(!text) return;
-  const entry = { id: Date.now(), date: TK, text, aiTags: [...noteAiTags] };
-  noteEntries.unshift(entry);
+  const claude = document.getElementById('noteClaude').value.trim();
+  const gemini = document.getElementById('noteGemini').value.trim();
+  const self   = document.getElementById('noteSelf').value.trim();
+  if(!claude && !gemini && !self) return;
+  const idx = noteEntries.findIndex(e => e.date === noteViewDate);
+  const entry = { date: noteViewDate, claude, gemini, self };
+  if(idx >= 0) noteEntries[idx] = entry; else noteEntries.unshift(entry);
   await save2('notes2:all', noteEntries);
-  // 입력창 초기화
-  document.getElementById('noteText').value = '';
-  autoResize(document.getElementById('noteText'));
-  noteAiTags = [];
-  ['claude','gemini','self'].forEach(tag => {
-    const btn = document.getElementById('aiBtn-' + tag);
-    if(btn) btn.className = 'ai-tag-btn';
-  });
-  renderNoteList();
   flash('noteOk');
 }
 
-function _noteCardHtml(e, isToday){
-  const [y,m,d] = e.date.split('-');
-  const tags = [];
-  if(e.aiTags && e.aiTags.includes('claude'))  tags.push('<span class="ntag ntag-claude">🤖 클로드</span>');
-  if(e.aiTags && e.aiTags.includes('gemini'))  tags.push('<span class="ntag ntag-gemini">✨ 제미나이</span>');
-  if(e.aiTags && e.aiTags.includes('self'))    tags.push('<span class="ntag ntag-self">💭 내 생각</span>');
-  const dateStr = isToday ? '오늘' : `${+y}년 ${+m}월 ${+d}일`;
-  return `<div class="note-card">
-    <div class="note-card-date">${dateStr}</div>
-    <div class="note-card-body">${(e.text||'').slice(0,200)}${(e.text||'').length>200?'…':''}</div>
-    ${tags.length ? `<div class="note-card-tags">${tags.join('')}</div>` : ''}
-  </div>`;
+function shiftNote(dir){
+  const d = new Date(noteViewDate);
+  d.setDate(d.getDate() + dir);
+  const next = d.toISOString().slice(0,10);
+  if(next > TK) return;
+  noteViewDate = next;
+  renderNoteForm();
 }
 
-function renderNoteList(){
-  const today = noteEntries.filter(e => e.date === TK);
-  const past  = noteEntries.filter(e => e.date !== TK);
-
-  // 오늘 노트 목록
-  const todayList = document.getElementById('todayNoteList');
-  todayList.innerHTML = today.map(e => _noteCardHtml(e, true)).join('');
-
-  // 지난 노트
-  const btn = document.getElementById('notePastBtn');
-  const sec = document.getElementById('notePastSection');
-  if(!past.length){ sec.style.display='none'; btn.style.display='none'; return; }
-  btn.style.display = 'block';
-  sec.style.display = notePastExpanded ? 'block' : 'none';
-  _renderSections(past);
-}
-
-function _renderSections(past){
-  const groups = { claude:[], gemini:[], self:[], none:[] };
-  past.forEach(e => {
-    const tags = e.aiTags || [];
-    if(tags.includes('claude'))  groups.claude.push(e);
-    if(tags.includes('gemini'))  groups.gemini.push(e);
-    if(tags.includes('self'))    groups.self.push(e);
-    if(!tags.length)             groups.none.push(e);
-  });
-  const secs = [
-    { key:'claude', label:'🤖 클로드' },
-    { key:'gemini', label:'✨ 제미나이' },
-    { key:'self',   label:'💭 내 생각' },
-    { key:'none',   label:'📝 태그 없음' },
-  ];
-  let html = '';
-  secs.forEach(({ key, label }) => {
-    const items = groups[key];
-    if(!items.length) return;
-    html += `<div class="note-section-hdr">${label} (${items.length}개)</div>`;
-    html += items.slice(0,20).map(e => _noteCardHtml(e, false)).join('');
-  });
-  document.getElementById('noteList').innerHTML = html || '<p style="font-size:14px;color:var(--ink3);padding:8px 0;">노트가 없어요.</p>';
-}
-
-function toggleNotePast(){
-  notePastExpanded = !notePastExpanded;
-  document.getElementById('notePastSection').style.display = notePastExpanded ? 'block' : 'none';
-  document.getElementById('notePastBtn').textContent = notePastExpanded ? '지난 노트 접기' : '지난 노트 보기';
-}
-
-document.getElementById('noteText').addEventListener('input', function(){ autoResize(this); });
+['noteClaude','noteGemini','noteSelf'].forEach(id => {
+  document.getElementById(id).addEventListener('input', function(){ autoResize(this); });
+});
 
 /* ══════════════════════════════
    ✅ 할 일 (메모·수정 모드 추가)
