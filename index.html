@@ -34,9 +34,9 @@ body,html{background:var(--bg);}
 .h-title{font-size:21px;font-weight:700;color:#fff;}
 .h-tagline{font-size:11px;color:#c5e8cf;margin-top:3px;}
 
-/* 탭 — 5개 */
-.tabs{display:flex;background:#e0e0dc;border-bottom:2px solid var(--g);overflow:hidden;}
-.tab{flex:1;min-width:0;padding:10px 2px;font-size:12px;font-weight:500;cursor:pointer;border:none;background:transparent;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .15s;color:var(--ink3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+/* 탭 */
+.tabs{display:flex;background:#e0e0dc;border-bottom:2px solid var(--g);}
+.tab{flex:1;padding:12px 0;font-size:16px;font-weight:500;cursor:pointer;border:none;background:transparent;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .15s;color:var(--ink3);}
 .tab:hover{color:var(--g-dk);background:#eaf6ed;}
 .tab[data-c="g"].active{color:var(--g-dk);border-bottom-color:var(--g);background:var(--g-ltr);}
 .tab[data-c="a"].active{color:#7a4a00;border-bottom-color:var(--amber-md);background:var(--amber-lt);}
@@ -74,36 +74,9 @@ textarea.input-full{min-height:110px;resize:vertical;line-height:1.8;}
 .btn-sec:hover{border-color:var(--g);color:var(--g-dk);}
 .save-ok{font-size:15px;color:var(--g-dk);font-weight:600;margin-left:10px;opacity:0;transition:opacity .3s;}
 
-/* ── 📝 노트 탭 ── */
-.note-textarea{width:100%;min-height:120px;padding:14px;font-size:16px;font-family:inherit;border:1.5px solid var(--border);border-radius:10px;background:var(--card);color:var(--ink);outline:none;line-height:1.9;resize:none;overflow:hidden;margin-bottom:8px;}
-.note-sec-lbl{font-size:13px;font-weight:700;color:var(--ink2);margin:10px 0 4px;letter-spacing:.04em;}
-.note-textarea:focus{border-color:var(--g);background:#fff;}
-.note-textarea::placeholder{color:var(--ink3);}
-.ai-tag-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
-.ai-tag-btn{padding:7px 18px;font-size:14px;font-weight:600;border:2px solid var(--border);border-radius:20px;background:var(--card);color:var(--ink3);cursor:pointer;transition:all .15s;font-family:inherit;}
-.ai-tag-btn:hover{border-color:var(--teal);color:var(--teal);}
-.ai-tag-btn.on-claude{background:#d97706;border-color:#92400e;color:#fff;}
-.ai-tag-btn.on-gemini{background:var(--teal);border-color:#0e4a60;color:#fff;}
-.ai-tag-btn.on-self{background:var(--g);border-color:var(--g-dk);color:#fff;}
-.note-card{background:var(--card);border-radius:10px;padding:13px;margin-bottom:8px;border:1.5px solid var(--border);}
-.note-card-date{font-size:11px;font-weight:700;color:var(--ink3);margin-bottom:5px;}
-.note-card-body{font-size:15px;color:var(--ink2);line-height:1.7;white-space:pre-wrap;}
-.note-card-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px;}
-.ntag{font-size:11px;font-weight:600;padding:3px 9px;border-radius:10px;}
-.ntag-claude{background:#fde68a;color:#92400e;}
-.ntag-gemini{background:var(--teal-lt);color:var(--teal);}
-.ntag-self{background:var(--g-lt);color:var(--g-dk);}
-
-/* 노트 섹션 헤더 */
-.note-section-hdr{font-size:12px;font-weight:700;color:var(--ink3);letter-spacing:.06em;padding:10px 0 5px;border-top:1px solid var(--border);margin-top:6px;}
-.note-section-hdr:first-child{border-top:none;margin-top:0;}
-
-/* ── 할일 ── */
-.task-wrapper{margin-bottom:8px;}
-.task-item{display:flex;align-items:center;gap:9px;padding:10px 12px;border-radius:8px;background:var(--card);border:1.5px solid var(--border);}
-.task-item.has-memo-open{border-radius:8px 8px 0 0;border-bottom-color:transparent;}
+/* ── 할일 상태 ── */
+.task-item{display:flex;align-items:center;gap:9px;padding:10px 12px;border-radius:8px;margin-bottom:6px;background:var(--card);border:1.5px solid var(--border);}
 .task-item.urgent{border-color:var(--red)!important;background:var(--red-lt)!important;}
-.task-item.urgent.has-memo-open{border-bottom-color:transparent!important;}
 .status-pill{font-size:11px;font-weight:700;padding:3px 10px;border-radius:12px;cursor:pointer;border:none;white-space:nowrap;flex-shrink:0;}
 .sp-wait{background:var(--gray-lt);color:var(--gray);}
 .sp-doing{background:var(--amber-lt);color:#7a4a00;}
@@ -111,19 +84,10 @@ textarea.input-full{min-height:110px;resize:vertical;line-height:1.8;}
 .sp-hold{background:var(--red-lt);color:var(--red);}
 .task-txt-wrap{flex:1;font-size:16px;color:var(--ink);}
 .task-done-txt{text-decoration:line-through;color:var(--ink3);}
-.task-edit-input{flex:1;font-size:15px;font-family:inherit;padding:3px 7px;border:1.5px solid var(--g);border-radius:5px;outline:none;color:var(--ink);}
 .del-btn{background:none;border:none;color:var(--ink3);cursor:pointer;font-size:20px;opacity:.4;flex-shrink:0;}
 .del-btn:hover{opacity:1;color:var(--red);}
 .urgent-btn{background:none;border:none;cursor:pointer;font-size:15px;opacity:.25;flex-shrink:0;padding:0;line-height:1;transition:opacity .15s;}
 .urgent-btn.on{opacity:1;}
-.memo-toggle-btn{background:none;border:none;cursor:pointer;font-size:14px;opacity:.3;flex-shrink:0;padding:0;line-height:1;transition:opacity .15s;}
-.memo-toggle-btn:hover,.memo-toggle-btn.on{opacity:1;}
-.task-edit-btn{background:none;border:1px solid var(--border);border-radius:5px;padding:2px 7px;font-size:11px;color:var(--ink3);cursor:pointer;font-family:inherit;flex-shrink:0;}
-.task-edit-btn:hover{border-color:var(--g);color:var(--g-dk);}
-.task-memo-area{background:var(--g-ltr);border:1.5px solid var(--g-lt);border-top:none;border-radius:0 0 8px 8px;padding:10px 12px;}
-.task-memo-area.urgent-memo{background:#fff5f5;border-color:#f0b0bb;}
-.task-memo-input{width:100%;min-height:56px;padding:8px 10px;font-size:15px;font-family:inherit;border:1.5px solid var(--border);border-radius:7px;background:#fff;color:var(--ink);outline:none;resize:none;overflow:hidden;line-height:1.7;}
-.task-memo-input:focus{border-color:var(--g);}
 .prog-bar{height:6px;background:var(--g-lt);border-radius:3px;overflow:hidden;margin-bottom:12px;}
 .prog-fill{height:6px;background:var(--g);border-radius:3px;transition:width .35s;}
 .prog-top{display:flex;justify-content:space-between;font-size:15px;color:var(--ink3);margin-bottom:5px;font-weight:500;}
@@ -133,7 +97,7 @@ textarea.input-full{min-height:110px;resize:vertical;line-height:1.8;}
 .add-row input::placeholder{color:var(--ink3);}
 .empty-hint{text-align:center;font-size:15px;color:var(--ink3);padding:1.5rem 0;}
 
-/* ── 글감노트 ── */
+/* ── 글감노트 카드 ── */
 .insight-card{background:var(--card);border-radius:10px;padding:13px;margin-bottom:9px;border:1.5px solid var(--border);}
 .insight-title{font-size:17px;font-weight:700;color:var(--ink);margin-bottom:7px;}
 .insight-tags-wrap{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:7px;}
@@ -195,70 +159,23 @@ textarea.input-full{min-height:110px;resize:vertical;line-height:1.8;}
 .past-toggle-btn:hover{color:var(--g-dk);}
 .edit-btn{background:none;border:1px solid var(--border);border-radius:6px;padding:2px 9px;font-size:12px;color:var(--ink3);cursor:pointer;font-family:inherit;}
 .edit-btn:hover{border-color:var(--g);color:var(--g-dk);}
-
-/* ── 간트 팝업 모달 ── */
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:1000;display:flex;align-items:center;justify-content:center;padding:16px;}
-.modal-box{background:#fff;border-radius:14px;padding:20px;width:100%;max-width:420px;box-shadow:0 8px 32px rgba(0,0,0,.2);}
-.modal-title{font-size:18px;font-weight:700;color:var(--ink);margin-bottom:5px;}
-.modal-info{font-size:14px;color:var(--ink3);margin-bottom:14px;line-height:1.6;}
-.modal-memo-saved{font-size:13px;color:var(--g-dk);font-weight:600;margin-left:8px;opacity:0;transition:opacity .3s;}
 </style>
-
-<!-- 간트 팝업 모달 -->
-<div id="ganttModal" class="modal-overlay" style="display:none" onclick="if(event.target===this)closeModal()">
-  <div class="modal-box">
-    <div class="modal-title" id="modalTitle"></div>
-    <div class="modal-info" id="modalInfo"></div>
-    <div class="sec-lbl">진행 메모 · 주석</div>
-    <textarea class="input-full" id="modalMemo" style="min-height:90px;margin-bottom:10px;" placeholder="현재 진행 상황, 신청 현황, 특이사항 등 자유롭게..."></textarea>
-    <div style="display:flex;gap:8px;align-items:center;">
-      <button class="btn-pri" onclick="saveModalMemo()">저장</button>
-      <button class="btn-sec" onclick="closeModal()">닫기</button>
-      <span class="modal-memo-saved" id="modalSaveOk">저장했어요 ✓</span>
-    </div>
-  </div>
-</div>
 
 <div class="root">
 <div class="header-band">
   <div class="h-sub">심리상담연구소 심지</div>
   <div class="h-title">2026 하반기 운영 플래너</div>
-  <div class="h-tagline">지금 여기 우리의 마음자리</div>
+  <div class="h-tagline">지금 이 자리에서, 한 걸음씩.</div>
 </div>
 <div class="tabs">
   <button class="tab active" data-c="g" onclick="showTab('timeline',this)">타임라인</button>
   <button class="tab" data-c="a" onclick="showTab('todo',this)">할 일</button>
-  <button class="tab" data-c="g" onclick="showTab('note',this)">📝 노트</button>
   <button class="tab" data-c="t" onclick="showTab('insight',this)">글감노트</button>
   <button class="tab" data-c="p" onclick="showTab('diary',this)">일기</button>
 </div>
 
-<!-- ───────── 📝 노트 ───────── -->
-<div class="panel" id="panel-note">
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
-    <button class="nav-btn" onclick="shiftNote(-1)">← 이전</button>
-    <span class="strip" id="noteDateLabel" style="margin:0 8px;flex:1;text-align:center;font-size:15px;"></span>
-    <button class="nav-btn" onclick="shiftNote(1)">다음 →</button>
-  </div>
-
-  <div class="note-sec-lbl">🤖 클로드</div>
-  <textarea class="note-textarea" id="noteClaude" placeholder="클로드와 나눈 내용, 아이디어..."></textarea>
-
-  <div class="note-sec-lbl">✨ 제미나이</div>
-  <textarea class="note-textarea" id="noteGemini" placeholder="제미나이와 나눈 내용..."></textarea>
-
-  <div class="note-sec-lbl">💭 내 생각</div>
-  <textarea class="note-textarea" id="noteSelf" placeholder="떠오르는 생각, 메모..."></textarea>
-
-  <div style="display:flex;align-items:center;gap:10px;margin-top:10px;">
-    <button class="btn-pri" onclick="saveNote()">저장하기</button>
-    <span class="save-ok" id="noteOk">저장했어요 ✓</span>
-  </div>
-</div>
-
-<!-- ───────── 타임라인 ───────── -->
+<!-- 타임라인 -->
 <div class="panel active" id="panel-timeline">
-  <div style="font-size:12px;color:var(--ink3);margin-bottom:8px;">💡 막대를 클릭하면 메모를 달 수 있어요</div>
   <div class="legend">
     <span><span class="ldot" style="background:#d4820a;"></span>나비</span>
     <span><span class="ldot" style="background:#3d8a4e;"></span>연리지</span>
@@ -274,11 +191,12 @@ textarea.input-full{min-height:110px;resize:vertical;line-height:1.8;}
     <div id="ganttRows"></div>
   </div>
   <div class="sum-grid">
-    <div class="sum-card"><div class="slbl">첫 홍보 시작</div><div class="sval w">4월 20일</div><div class="ssub">나비 1차</div></div>
+    <div class="sum-card"><div class="slbl">첫 홍보 시작</div><div class="sval w">4월 20일</div><div class="ssub">나비 10기</div></div>
     <div class="sum-card"><div class="slbl">총 프로그램</div><div class="sval">5개</div><div class="ssub">나비·연리지·3급</div></div>
-    <div class="sum-card"><div class="slbl">최장 프로그램</div><div class="sval">3급 17회기</div><div class="ssub">8/3 ~ 12/21</div></div>
-    <div class="sum-card"><div class="slbl">병행 구간</div><div class="sval">3구간</div><div class="ssub">8월·9~10월·10~12월</div></div>
+    <div class="sum-card"><div class="slbl">최장 프로그램</div><div class="sval">3급 15회기</div><div class="ssub">8/5 ~ 11/11</div></div>
+    <div class="sum-card"><div class="slbl">병행 구간</div><div class="sval">4구간</div><div class="ssub">6~7월·8월·8~11월·10~12월</div></div>
   </div>
+  <!-- 날짜 네비게이터 -->
   <div class="nav-section">
     <div class="nav-bar">
       <button class="nav-btn" onclick="shiftNav(-1)">← 이전</button>
@@ -289,7 +207,7 @@ textarea.input-full{min-height:110px;resize:vertical;line-height:1.8;}
   </div>
 </div>
 
-<!-- ───────── 할 일 ───────── -->
+<!-- 할 일 -->
 <div class="panel" id="panel-todo">
   <div class="strip" id="todayLabel2"></div>
   <div class="prog-top"><span id="progressLabel">0 / 0 완료</span><span id="pctLabel">0%</span></div>
@@ -299,7 +217,7 @@ textarea.input-full{min-height:110px;resize:vertical;line-height:1.8;}
     <span style="color:#7a4a00;background:var(--amber-lt);padding:3px 10px;border-radius:10px;">▶ 진행중</span>
     <span style="color:var(--g-dk);background:var(--g-lt);padding:3px 10px;border-radius:10px;">✓ 완료</span>
     <span style="color:var(--red);background:var(--red-lt);padding:3px 10px;border-radius:10px;">✕ 보류</span>
-    <span style="font-size:11px;color:var(--ink3);align-self:center;">← 상태 클릭 변경 &nbsp;|&nbsp; 🚨 긴급 &nbsp;|&nbsp; 📝 메모</span>
+    <span style="font-size:11px;color:var(--ink3);align-self:center;">← 상태 누르면 변경 &nbsp;|&nbsp; 🚨 긴급 표시</span>
   </div>
   <ul id="taskList" style="list-style:none;"></ul>
   <p class="empty-hint" id="emptyHint" style="display:none;">할 일을 추가해봐요 🌱</p>
@@ -309,39 +227,49 @@ textarea.input-full{min-height:110px;resize:vertical;line-height:1.8;}
   </div>
 </div>
 
-<!-- ───────── 글감노트 ───────── -->
+<!-- 글감노트 -->
 <div class="panel" id="panel-insight">
   <input class="search-input" id="insightSearch" placeholder="🔍 제목으로 검색..." oninput="renderInsights()"/>
+
   <div class="card-box">
     <div class="sec-lbl">제목 (한 문장)</div>
     <input class="input-full" id="insightTitle" placeholder="예: 모래상자에서 집을 만든 아이"/>
+
     <div class="sec-lbl">작업 유형</div>
     <div class="tag-row" id="typeRow"></div>
+
     <div class="sec-lbl">대상</div>
     <div class="tag-row" id="gradeRow"></div>
+
     <div class="sec-lbl">성별</div>
     <div class="tag-row" id="genderRow"></div>
+
     <div class="sec-lbl">SUCCESS 분류 (복수 선택 가능)</div>
     <div class="tag-row" id="successRow"></div>
+
     <div class="sec-lbl">심리적 흐름 · 통찰</div>
     <textarea class="input-full" id="insightText" placeholder="내담자의 심리적 흐름, 작업에서 느낀 통찰을 자유롭게 기록하세요.&#10;(특정 인물을 식별할 수 있는 정보는 쓰지 마세요)"></textarea>
+
     <div class="sec-lbl">격려의 문장</div>
     <input class="input-full" id="insightEncourage" placeholder="이 이야기에서 건네고 싶은 격려 한 마디"/>
+
     <div class="img-upload-area" onclick="document.getElementById('imgInput').click()">
       <div class="img-upload-label">📎 미술작업 · 모래놀이 이미지 첨부 (선택)</div>
       <img class="img-preview" id="imgPreview"/>
       <input type="file" id="imgInput" accept="image/*" style="display:none" onchange="previewImg(this)"/>
     </div>
+
     <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
       <button class="btn-pri" onclick="saveInsight()" id="insightSaveBtn">저장하기</button>
       <span class="save-ok" id="insightOk">저장했어요 ✓</span>
       <button class="btn-sec" style="margin-left:auto;" onclick="clearInsightForm()">초기화</button>
     </div>
   </div>
+
   <div id="insightList"></div>
 </div>
 
-<!-- ───────── 일기 ───────── -->
+<!-- 일기 -->
 <div class="panel" id="panel-diary">
   <div class="strip" id="diaryDateLabel"></div>
   <div class="sec-lbl">오늘 기분</div>
@@ -354,14 +282,18 @@ textarea.input-full{min-height:110px;resize:vertical;line-height:1.8;}
   <button class="past-toggle-btn" id="pastToggleBtn" onclick="togglePast()" style="display:none;">지난 기록 보기 ▼</button>
   <div id="pastEntries" style="margin-top:10px;display:none;"></div>
 </div>
-</div><!-- /root -->
+</div>
 
 <script>
-/* ── Google Sheets 연동 스토리지 ── */
+/* ── Google Sheets 연동 스토리지 ──────────────────────────────
+   1. Apps Script 배포 후 아래 GAS_URL을 실제 URL로 교체하세요.
+   2. GAS_URL이 비어 있으면 localStorage 로 자동 폴백됩니다.
+   ──────────────────────────────────────────────────────────── */
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbyVwWQLSz0xBTYtFO6N9CVkzux-REygKqTNng5JCA3VMgg8nSKDyVF8bU8g8aa9h4hp8w/exec';
 
 window.storage = (function(){
   const useGAS = () => GAS_URL && GAS_URL.startsWith('https://');
+
   return {
     async get(key) {
       if (useGAS()) {
@@ -369,377 +301,245 @@ window.storage = (function(){
           const res = await fetch(GAS_URL + '?key=' + encodeURIComponent(key));
           const data = await res.json();
           return data.value != null ? {value: data.value} : null;
-        } catch(e) { console.warn('[storage] GAS GET 실패, localStorage 폴백:', e); }
+        } catch(e) {
+          console.warn('[storage] GAS GET 실패, localStorage 폴백:', e);
+        }
       }
+      // localStorage 폴백
       const v = localStorage.getItem(key);
       return v != null ? {value: v} : null;
     },
     async set(key, value) {
+      // localStorage에도 항상 저장 (오프라인 캐시)
       try { localStorage.setItem(key, value); } catch(_){}
       if (useGAS()) {
         try {
-          await fetch(GAS_URL, { method:'POST', body: JSON.stringify({key, value}) });
-        } catch(e) { console.warn('[storage] GAS POST 실패 (localStorage에는 저장됨):', e); }
+          await fetch(GAS_URL, {
+            method: 'POST',
+            // text/plain → CORS preflight 없이 전송 가능
+            body: JSON.stringify({key, value}),
+          });
+        } catch(e) {
+          console.warn('[storage] GAS POST 실패 (localStorage에는 저장됨):', e);
+        }
       }
     }
   };
 })();
 
-/* ── 공통 유틸 ── */
-function showTab(n, el){
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.getElementById('panel-' + n).classList.add('active');
+/* ── 공통 ── */
+function showTab(n,el){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('panel-'+n).classList.add('active');
   el.classList.add('active');
 }
+const TK=new Date().toISOString().slice(0,10);
+const DN=['일','월','화','수','목','금','토'];
+const nd=new Date();
+const todayStr=`${nd.getFullYear()}년 ${nd.getMonth()+1}월 ${nd.getDate()}일 (${DN[nd.getDay()]})`;
+document.getElementById('todayLabel2').textContent='📅 '+todayStr;
+document.getElementById('diaryDateLabel').textContent='📅 '+todayStr+' 일기';
 
-const TK  = new Date().toISOString().slice(0,10);
-const DN  = ['일','월','화','수','목','금','토'];
-const nd  = new Date();
-const todayStr = `${nd.getFullYear()}년 ${nd.getMonth()+1}월 ${nd.getDate()}일 (${DN[nd.getDay()]})`;
+async function load(k){try{const r=await window.storage.get(k);return r?JSON.parse(r.value):null;}catch{return null;}}
+async function save2(k,v){try{await window.storage.set(k,JSON.stringify(v));}catch{}}
+function flash(id){const el=document.getElementById(id);el.style.opacity='1';setTimeout(()=>el.style.opacity='0',2200);}
 
-document.getElementById('todayLabel2').textContent  = '📅 ' + todayStr;
-document.getElementById('diaryDateLabel').textContent = '📅 ' + todayStr + ' 일기';
-document.getElementById('noteDateLabel').textContent  = '📝 ' + todayStr + ' 노트';
-
-async function load(k){ try{ const r=await window.storage.get(k); return r?JSON.parse(r.value):null; }catch{ return null; } }
-async function save2(k,v){ try{ await window.storage.set(k,JSON.stringify(v)); }catch{} }
-function flash(id){ const el=document.getElementById(id); el.style.opacity='1'; setTimeout(()=>el.style.opacity='0',2200); }
-function autoResize(el){ el.style.height='auto'; el.style.height=el.scrollHeight+'px'; }
-
-/* ══════════════════════════════
-   📝 노트 탭
-══════════════════════════════ */
-let noteEntries = [];
-let noteViewDate = TK;
-
-async function initNotes(){
-  noteEntries = (await load('notes2:all')) || [];
-  renderNoteForm();
-}
-
-function renderNoteForm(){
-  const [y,m,d] = noteViewDate.split('-');
-  const isToday = noteViewDate === TK;
-  document.getElementById('noteDateLabel').textContent =
-    isToday ? `📝 ${todayStr} 노트` : `📝 ${+y}년 ${+m}월 ${+d}일 노트`;
-  const entry = noteEntries.find(e => e.date === noteViewDate) || {};
-  document.getElementById('noteClaude').value = entry.claude || '';
-  document.getElementById('noteGemini').value = entry.gemini || '';
-  document.getElementById('noteSelf').value   = entry.self   || '';
-  ['noteClaude','noteGemini','noteSelf'].forEach(id => autoResize(document.getElementById(id)));
-}
-
-async function saveNote(){
-  const claude = document.getElementById('noteClaude').value.trim();
-  const gemini = document.getElementById('noteGemini').value.trim();
-  const self   = document.getElementById('noteSelf').value.trim();
-  if(!claude && !gemini && !self) return;
-  const idx = noteEntries.findIndex(e => e.date === noteViewDate);
-  const entry = { date: noteViewDate, claude, gemini, self };
-  if(idx >= 0) noteEntries[idx] = entry; else noteEntries.unshift(entry);
-  await save2('notes2:all', noteEntries);
-  flash('noteOk');
-}
-
-function shiftNote(dir){
-  const d = new Date(noteViewDate);
-  d.setDate(d.getDate() + dir);
-  const next = d.toISOString().slice(0,10);
-  if(next > TK) return;
-  noteViewDate = next;
-  renderNoteForm();
-}
-
-['noteClaude','noteGemini','noteSelf'].forEach(id => {
-  document.getElementById(id).addEventListener('input', function(){ autoResize(this); });
-});
-
-/* ══════════════════════════════
-   ✅ 할 일 (메모·수정 모드 추가)
-══════════════════════════════ */
-const STATUS_CYCLE = ['wait','doing','done','hold'];
-const STATUS_CFG = {
-  wait:  { l:'대기',   cls:'sp-wait'  },
-  doing: { l:'진행중', cls:'sp-doing' },
-  done:  { l:'완료',   cls:'sp-done'  },
-  hold:  { l:'보류',   cls:'sp-hold'  }
+/* ── 할 일 (상태 관리) ── */
+const STATUS_CYCLE=['wait','doing','done','hold'];
+const STATUS_CFG={
+  wait:{l:'대기',cls:'sp-wait'},
+  doing:{l:'진행중',cls:'sp-doing'},
+  done:{l:'완료',cls:'sp-done'},
+  hold:{l:'보류',cls:'sp-hold'}
 };
-const DEFAULT_TASKS = [
-  {text:'특강 신청 페이지 폼 정상 작동 확인 (4/26 특강)', status:'wait',  urgent:false, id:1, memo:''},
-  {text:'특강 홍보 카피 작성 + 이미지 제작',              status:'done',  urgent:false, id:2, memo:''},
-  {text:'밴드 6개에 특강 홍보글 올리기',                  status:'done',  urgent:false, id:3, memo:''},
-  {text:'[긴급] 4/26 특강 강의자료(PPT) 준비',            status:'doing', urgent:true,  id:7, memo:''},
-  {text:'나비 1차 홍보 카피 작성 + 이미지 제작',          status:'wait',  urgent:false, id:4, memo:''},
-  {text:'나비 신청 폼 일정·가격 확인',                    status:'wait',  urgent:false, id:5, memo:''},
-  {text:'이음이 뉴스레터 4월호 준비 (4/25 발행)',         status:'wait',  urgent:false, id:6, memo:''},
+const DEFAULT_TASKS=[
+  {text:'특강 신청 페이지 폼 정상 작동 확인 (4/26 특강)',status:'wait',urgent:false,id:1},
+  {text:'특강 홍보 카피 작성 + 이미지 제작',status:'done',urgent:false,id:2},
+  {text:'밴드 6개에 특강 홍보글 올리기',status:'done',urgent:false,id:3},
+  {text:'[긴급] 4/26 특강 강의자료(PPT) 준비',status:'doing',urgent:true,id:7},
+  {text:'나비 1차 홍보 카피 작성 + 이미지 제작',status:'wait',urgent:false,id:4},
+  {text:'나비 신청 폼 일정·가격 확인',status:'wait',urgent:false,id:5},
+  {text:'이음이 뉴스레터 4월호 준비 (4/25 발행)',status:'wait',urgent:false,id:6},
 ];
-let tasks = [];
-
+let tasks=[];
 async function initTasks(){
-  const saved = await load('tasks2:' + TK);
+  const saved=await load('tasks2:'+TK);
   if(saved){
-    tasks = saved.map(t => ({ memo:'', ...t }));
+    tasks=saved;
   } else {
-    const yd = new Date(); yd.setDate(yd.getDate()-1);
-    const yk = yd.toISOString().slice(0,10);
-    const prev = await load('tasks2:' + yk);
-    const carried = prev
-      ? prev.filter(t => t.status==='wait'||t.status==='doing').map(t => ({memo:'',...t}))
-      : [];
-    tasks = carried.length ? carried : DEFAULT_TASKS.map(t => ({...t}));
+    // 어제 미완료(대기·진행중) 항목 자동 인계
+    const yd=new Date();yd.setDate(yd.getDate()-1);
+    const yk=yd.toISOString().slice(0,10);
+    const prev=await load('tasks2:'+yk);
+    const carried=prev?prev.filter(t=>t.status==='wait'||t.status==='doing').map(t=>({...t})):[];
+    tasks=carried.length?carried:DEFAULT_TASKS.map(t=>({...t}));
   }
   renderTasks();
 }
-
 function renderTasks(){
-  const list = document.getElementById('taskList');
-  list.innerHTML = '';
-  const done = tasks.filter(t => t.status==='done').length;
-  document.getElementById('progressLabel').textContent = `${done} / ${tasks.length} 완료`;
-  const p = tasks.length ? Math.round(done/tasks.length*100) : 0;
-  document.getElementById('pctLabel').textContent = p + '%';
-  document.getElementById('progFill').style.width = p + '%';
-  document.getElementById('emptyHint').style.display = tasks.length ? 'none' : 'block';
-
-  tasks.forEach((t, i) => {
-    const cfg = STATUS_CFG[t.status] || STATUS_CFG.wait;
-    const hasMemo = !!(t.memo && t.memo.trim());
-
-    /* wrapper li */
-    const wrapper = document.createElement('li');
-    wrapper.className = 'task-wrapper';
-
-    /* main row */
-    const row = document.createElement('div');
-    row.className = 'task-item' + (t.urgent ? ' urgent' : '');
-
-    /* status pill */
-    const pill = document.createElement('button');
-    pill.className = 'status-pill ' + cfg.cls;
-    pill.textContent = cfg.l;
-    pill.onclick = () => {
-      const ci = STATUS_CYCLE.indexOf(t.status);
-      tasks[i].status = STATUS_CYCLE[(ci+1) % STATUS_CYCLE.length];
-      save2('tasks2:' + TK, tasks);
-      renderTasks();
+  const list=document.getElementById('taskList');
+  list.innerHTML='';
+  const done=tasks.filter(t=>t.status==='done').length;
+  document.getElementById('progressLabel').textContent=`${done} / ${tasks.length} 완료`;
+  const p=tasks.length?Math.round(done/tasks.length*100):0;
+  document.getElementById('pctLabel').textContent=p+'%';
+  document.getElementById('progFill').style.width=p+'%';
+  document.getElementById('emptyHint').style.display=tasks.length?'none':'block';
+  tasks.forEach((t,i)=>{
+    const cfg=STATUS_CFG[t.status]||STATUS_CFG.wait;
+    const li=document.createElement('li');
+    li.className='task-item'+(t.urgent?' urgent':'');
+    const pill=document.createElement('button');
+    pill.className='status-pill '+cfg.cls;
+    pill.textContent=cfg.l;
+    pill.onclick=()=>{
+      const ci=STATUS_CYCLE.indexOf(t.status);
+      tasks[i].status=STATUS_CYCLE[(ci+1)%STATUS_CYCLE.length];
+      save2('tasks2:'+TK,tasks);renderTasks();
     };
-
-    /* title span */
-    const sp = document.createElement('span');
-    sp.className = 'task-txt-wrap' + (t.status==='done' ? ' task-done-txt' : '');
-    sp.textContent = t.text;
-
-    /* memo toggle btn */
-    const memoBtn = document.createElement('button');
-    memoBtn.className = 'memo-toggle-btn' + (hasMemo ? ' on' : '');
-    memoBtn.textContent = '📝';
-    memoBtn.title = '상세 메모';
-
-    /* edit btn */
-    const editBtn = document.createElement('button');
-    editBtn.className = 'task-edit-btn';
-    editBtn.textContent = '수정';
-    editBtn.onclick = () => startEditTask(i, sp, editBtn);
-
-    /* urgent btn */
-    const ub = document.createElement('button');
-    ub.className = 'urgent-btn' + (t.urgent ? ' on' : '');
-    ub.textContent = '🚨';
-    ub.title = '긴급 표시';
-    ub.onclick = () => { tasks[i].urgent = !tasks[i].urgent; save2('tasks2:'+TK, tasks); renderTasks(); };
-
-    /* delete btn */
-    const dl = document.createElement('button');
-    dl.className = 'del-btn';
-    dl.textContent = '×';
-    dl.onclick = () => { tasks.splice(i,1); save2('tasks2:'+TK, tasks); renderTasks(); };
-
-    row.appendChild(pill); row.appendChild(sp); row.appendChild(memoBtn);
-    row.appendChild(editBtn); row.appendChild(ub); row.appendChild(dl);
-
-    /* memo area */
-    const memoArea = document.createElement('div');
-    memoArea.className = 'task-memo-area' + (t.urgent ? ' urgent-memo' : '');
-    memoArea.style.display = 'none';
-
-    const memoInput = document.createElement('textarea');
-    memoInput.className = 'task-memo-input';
-    memoInput.value = t.memo || '';
-    memoInput.placeholder = '상세 메모, 아이디어, 참고 링크 등...';
-    memoInput.addEventListener('input', function(){ autoResize(this); });
-    memoInput.addEventListener('blur', () => {
-      tasks[i].memo = memoInput.value;
-      save2('tasks2:'+TK, tasks);
-      /* 메모 유무에 따라 아이콘 강조 */
-      memoBtn.className = 'memo-toggle-btn' + (memoInput.value.trim() ? ' on' : '');
-    });
-    memoArea.appendChild(memoInput);
-
-    memoBtn.onclick = () => {
-      const visible = memoArea.style.display !== 'none';
-      memoArea.style.display = visible ? 'none' : 'block';
-      if(!visible){
-        row.classList.add('has-memo-open');
-        autoResize(memoInput);
-        memoInput.focus();
-      } else {
-        row.classList.remove('has-memo-open');
-      }
-    };
-
-    wrapper.appendChild(row);
-    wrapper.appendChild(memoArea);
-    list.appendChild(wrapper);
+    const sp=document.createElement('span');
+    sp.className='task-txt-wrap'+(t.status==='done'?' task-done-txt':'');
+    sp.textContent=t.text;
+    const ub=document.createElement('button');
+    ub.className='urgent-btn'+(t.urgent?' on':'');
+    ub.textContent='🚨';ub.title='긴급 표시';
+    ub.onclick=()=>{tasks[i].urgent=!tasks[i].urgent;save2('tasks2:'+TK,tasks);renderTasks();};
+    const dl=document.createElement('button');dl.className='del-btn';dl.textContent='×';
+    dl.onclick=()=>{tasks.splice(i,1);save2('tasks2:'+TK,tasks);renderTasks();};
+    li.appendChild(pill);li.appendChild(sp);li.appendChild(ub);li.appendChild(dl);
+    list.appendChild(li);
   });
 }
-
-function startEditTask(i, sp, editBtn){
-  const input = document.createElement('input');
-  input.type = 'text';
-  input.className = 'task-edit-input';
-  input.value = tasks[i].text;
-  sp.parentNode.replaceChild(input, sp);
-  editBtn.textContent = '완료';
-  editBtn.onclick = () => finishEditTask(i, input, editBtn);
-  input.focus();
-  input.addEventListener('keydown', e => { if(e.key==='Enter') finishEditTask(i, input, editBtn); });
-}
-
-function finishEditTask(i, input, editBtn){
-  const newText = input.value.trim();
-  if(newText) tasks[i].text = newText;
-  save2('tasks2:'+TK, tasks);
-  renderTasks();
-}
-
 function addTask(){
-  const inp = document.getElementById('taskInput');
-  const text = inp.value.trim();
-  if(!text) return;
-  tasks.push({ text, status:'wait', urgent:false, id:Date.now(), memo:'' });
-  save2('tasks2:'+TK, tasks);
-  inp.value = '';
-  renderTasks();
+  const inp=document.getElementById('taskInput'),text=inp.value.trim();
+  if(!text)return;
+  tasks.push({text,status:'wait',urgent:false,id:Date.now()});
+  save2('tasks2:'+TK,tasks);inp.value='';renderTasks();
 }
-document.getElementById('taskInput').addEventListener('keydown', e => { if(e.key==='Enter') addTask(); });
+document.getElementById('taskInput').addEventListener('keydown',e=>{if(e.key==='Enter')addTask();});
 
-/* ══════════════════════════════
-   🌿 글감노트 (기존 그대로)
-══════════════════════════════ */
-const TYPES   = ['미술작업','모래놀이','대화상담','기타'];
-const GRADES  = ['유아','초등','중등','고등','부모','교사','기타'];
-const GENDERS = ['남','여'];
-const SUCCESS = [
+/* ── 글감노트 ── */
+const TYPES=['미술작업','모래놀이','대화상담','기타'];
+const GRADES=['유아','초등','중등','고등','부모','교사','기타'];
+const GENDERS=['남','여'];
+const SUCCESS=[
   {k:'S1',l:'S 우월성추구'},{k:'U',l:'U 자기이해'},{k:'C1',l:'C 자신감'},
   {k:'C2',l:'C 존중감'},{k:'E',l:'E 격려'},{k:'S2',l:'S 사회적관심'},{k:'S3',l:'S 사회적평등'}
 ];
-let selType='', selGrades=[], selGender='', selSuccess=[], insightImg='';
-let editingInsightIdx = -1;
+let selType='',selGrades=[],selGender='',selSuccess=[],insightImg='';
+let editingInsightIdx=-1;
 
-function makeTagGroup(containerId, items, getSelected, onToggle){
-  const c = document.getElementById(containerId);
-  items.forEach(item => {
-    const btn = document.createElement('button');
-    btn.className = 'tag';
-    btn.textContent = typeof item==='string' ? item : item.l;
-    btn.dataset.val = typeof item==='string' ? item : item.k;
-    btn.onclick = () => {
-      onToggle(btn.dataset.val, btn);
-      c.querySelectorAll('.tag').forEach(b => {
-        b.className = 'tag' + (getSelected(b.dataset.val) ? ' on' : '');
+function makeTagGroup(containerId,items,getSelected,onToggle,multiSelect=false){
+  const c=document.getElementById(containerId);
+  items.forEach(item=>{
+    const btn=document.createElement('button');
+    btn.className='tag';btn.textContent=typeof item==='string'?item:item.l;
+    btn.dataset.val=typeof item==='string'?item:item.k;
+    btn.onclick=()=>{
+      onToggle(btn.dataset.val,btn);
+      c.querySelectorAll('.tag').forEach(b=>{
+        const isOn=getSelected(b.dataset.val);
+        b.className='tag'+(isOn?' on':'');
       });
     };
     c.appendChild(btn);
   });
 }
-makeTagGroup('typeRow',    TYPES,   v => selType===v,           v => { selType = selType===v ? '' : v; });
-makeTagGroup('gradeRow',   GRADES,  v => selGrades.includes(v), v => { selGrades = selGrades.includes(v) ? selGrades.filter(x=>x!==v) : [...selGrades,v]; });
-makeTagGroup('genderRow',  GENDERS, v => selGender===v,         v => { selGender = selGender===v ? '' : v; });
-makeTagGroup('successRow', SUCCESS, v => selSuccess.includes(v),v => { selSuccess = selSuccess.includes(v) ? selSuccess.filter(x=>x!==v) : [...selSuccess,v]; });
+
+makeTagGroup('typeRow',TYPES,v=>selType===v,v=>{selType=selType===v?'':v;});
+makeTagGroup('gradeRow',GRADES,v=>selGrades.includes(v),v=>{
+  selGrades=selGrades.includes(v)?selGrades.filter(x=>x!==v):[...selGrades,v];
+},true);
+makeTagGroup('genderRow',GENDERS,v=>selGender===v,v=>{selGender=selGender===v?'':v;});
+makeTagGroup('successRow',SUCCESS,v=>selSuccess.includes(v),v=>{
+  selSuccess=selSuccess.includes(v)?selSuccess.filter(x=>x!==v):[...selSuccess,v];
+},true);
 
 function previewImg(input){
-  const file = input.files[0]; if(!file) return;
-  const reader = new FileReader();
-  reader.onload = e => {
-    insightImg = e.target.result;
-    const p = document.getElementById('imgPreview'); p.src = insightImg; p.style.display = 'block';
+  const file=input.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    insightImg=e.target.result;
+    const p=document.getElementById('imgPreview');p.src=insightImg;p.style.display='block';
   };
   reader.readAsDataURL(file);
 }
-let insights = [];
-async function initInsights(){ insights = (await load('insights2:all')) || []; renderInsights(); }
+let insights=[];
+async function initInsights(){insights=(await load('insights2:all'))||[];renderInsights();}
 
 async function saveInsight(){
-  const title = document.getElementById('insightTitle').value.trim();
-  const text  = document.getElementById('insightText').value.trim();
-  const enc   = document.getElementById('insightEncourage').value.trim();
-  if(!title && !text) return;
-  const entry = {
-    id: editingInsightIdx>=0 ? insights[editingInsightIdx].id : Date.now(),
-    title, type: selType,
-    grades: [...selGrades], gender: selGender,
-    success: [...selSuccess],
-    successLabel: selSuccess.map(k => SUCCESS.find(s=>s.k===k)?.l||'').filter(Boolean).join(', '),
-    text, encourage: enc, img: insightImg||''
+  const title=document.getElementById('insightTitle').value.trim();
+  const text=document.getElementById('insightText').value.trim();
+  const enc=document.getElementById('insightEncourage').value.trim();
+  if(!title&&!text)return;
+  const entry={
+    id:editingInsightIdx>=0?insights[editingInsightIdx].id:Date.now(),
+    title,type:selType,
+    grades:[...selGrades],gender:selGender,
+    success:[...selSuccess],
+    successLabel:selSuccess.map(k=>SUCCESS.find(s=>s.k===k)?.l||'').filter(Boolean).join(', '),
+    text,encourage:enc,img:insightImg||''
   };
   if(editingInsightIdx>=0){
-    insights[editingInsightIdx] = entry;
-    editingInsightIdx = -1;
-    document.getElementById('insightSaveBtn').textContent = '저장하기';
+    insights[editingInsightIdx]=entry;
+    editingInsightIdx=-1;
+    document.getElementById('insightSaveBtn').textContent='저장하기';
   } else {
     insights.unshift(entry);
   }
-  await save2('insights2:all', insights);
-  renderInsights(); flash('insightOk'); clearInsightForm();
+  await save2('insights2:all',insights);
+  renderInsights();flash('insightOk');clearInsightForm();
 }
 
 function clearInsightForm(){
-  ['insightTitle','insightText','insightEncourage'].forEach(id => document.getElementById(id).value='');
+  ['insightTitle','insightText','insightEncourage'].forEach(id=>document.getElementById(id).value='');
   document.getElementById('imgPreview').style.display='none';
   document.getElementById('imgPreview').src='';
   document.getElementById('imgInput').value='';
-  insightImg=''; selType=''; selGrades=[]; selGender=''; selSuccess=[];
+  insightImg='';selType='';selGrades=[];selGender='';selSuccess=[];
   editingInsightIdx=-1;
   document.getElementById('insightSaveBtn').textContent='저장하기';
-  document.querySelectorAll('#typeRow .tag,#gradeRow .tag,#genderRow .tag,#successRow .tag').forEach(b=>b.className='tag');
+  document.querySelectorAll('#typeRow .tag,#gradeRow .tag,#genderRow .tag,#successRow .tag')
+    .forEach(b=>b.className='tag');
 }
 
 function editInsight(i){
-  const e = insights[i];
-  document.getElementById('insightTitle').value    = e.title||'';
-  document.getElementById('insightText').value     = e.text||'';
-  document.getElementById('insightEncourage').value= e.encourage||'';
-  selType    = e.type||'';
-  selGrades  = [...(e.grades||[])];
-  selGender  = e.gender||'';
-  selSuccess = Array.isArray(e.success) ? [...e.success] : (e.success?[e.success]:[]);
-  insightImg = e.img||'';
-  if(insightImg){ const p=document.getElementById('imgPreview'); p.src=insightImg; p.style.display='block'; }
-  else { document.getElementById('imgPreview').style.display='none'; }
+  const e=insights[i];
+  document.getElementById('insightTitle').value=e.title||'';
+  document.getElementById('insightText').value=e.text||'';
+  document.getElementById('insightEncourage').value=e.encourage||'';
+  selType=e.type||'';
+  selGrades=[...(e.grades||[])];
+  selGender=e.gender||'';
+  // 구버전(문자열) 호환
+  selSuccess=Array.isArray(e.success)?[...e.success]:(e.success?[e.success]:[]);
+  insightImg=e.img||'';
+  if(insightImg){const p=document.getElementById('imgPreview');p.src=insightImg;p.style.display='block';}
+  else{document.getElementById('imgPreview').style.display='none';}
   document.querySelectorAll('#typeRow .tag').forEach(b=>b.className='tag'+(selType===b.dataset.val?' on':''));
   document.querySelectorAll('#gradeRow .tag').forEach(b=>b.className='tag'+(selGrades.includes(b.dataset.val)?' on':''));
   document.querySelectorAll('#genderRow .tag').forEach(b=>b.className='tag'+(selGender===b.dataset.val?' on':''));
   document.querySelectorAll('#successRow .tag').forEach(b=>b.className='tag'+(selSuccess.includes(b.dataset.val)?' on':''));
-  editingInsightIdx = i;
-  document.getElementById('insightSaveBtn').textContent = '수정 저장';
+  editingInsightIdx=i;
+  document.getElementById('insightSaveBtn').textContent='수정 저장';
   document.getElementById('insightTitle').scrollIntoView({behavior:'smooth'});
 }
 
 function renderInsights(){
-  const q = document.getElementById('insightSearch').value.trim().toLowerCase();
-  const c = document.getElementById('insightList');
-  const list = q ? insights.filter(e=>(e.title||'').toLowerCase().includes(q)) : insights;
-  if(!list.length){ c.innerHTML=`<p class="empty-hint">${q?'검색 결과 없음':'글감을 기록해봐요 🌿'}</p>`; return; }
+  const q=document.getElementById('insightSearch').value.trim().toLowerCase();
+  const c=document.getElementById('insightList');
+  const list=q?insights.filter(e=>(e.title||'').toLowerCase().includes(q)):insights;
+  if(!list.length){c.innerHTML=`<p class="empty-hint">${q?'검색 결과 없음':'글감을 기록해봐요 🌿'}</p>`;return;}
   c.innerHTML=`<p style="font-size:15px;color:var(--ink3);font-weight:600;margin-bottom:8px;">저장된 글감 ${list.length}개</p>`;
-  list.forEach(e => {
-    const ri = insights.indexOf(e);
+  list.forEach((e,i)=>{
+    const ri=insights.indexOf(e);
     const tags=[];
-    if(e.type) tags.push(`<span class="itag itag-type">${e.type}</span>`);
-    if(e.grades&&e.grades.length) e.grades.forEach(g=>tags.push(`<span class="itag itag-grade">${g}</span>`));
-    if(e.gender) tags.push(`<span class="itag itag-gender">${e.gender}</span>`);
-    if(e.successLabel) tags.push(`<span class="itag itag-success">${e.successLabel}</span>`);
-    const card = document.createElement('div'); card.className='insight-card';
+    if(e.type)tags.push(`<span class="itag itag-type">${e.type}</span>`);
+    if(e.grades&&e.grades.length)e.grades.forEach(g=>tags.push(`<span class="itag itag-grade">${g}</span>`));
+    if(e.gender)tags.push(`<span class="itag itag-gender">${e.gender}</span>`);
+    if(e.successLabel)tags.push(`<span class="itag itag-success">${e.successLabel}</span>`);
+    const card=document.createElement('div');card.className='insight-card';
     card.innerHTML=`
       <div class="insight-card-head">
         <div class="insight-title">${e.title||'(제목 없음)'}</div>
@@ -756,38 +556,35 @@ function renderInsights(){
     c.appendChild(card);
   });
 }
-async function delInsight(i){ insights.splice(i,1); await save2('insights2:all',insights); renderInsights(); }
+async function delInsight(i){insights.splice(i,1);await save2('insights2:all',insights);renderInsights();}
 
-/* ══════════════════════════════
-   📔 일기 (기존 그대로)
-══════════════════════════════ */
-let selectedMood='', entries=[], editingDiaryDate=null, pastExpanded=false;
-
-['☀️ 맑음','🌤 보통','🌧 흐림','🌪 힘듦','🌈 특별'].forEach(m => {
-  const btn = document.createElement('button'); btn.className='mood-btn'; btn.textContent=m;
-  btn.onclick = () => { selectedMood=m; document.querySelectorAll('.mood-btn').forEach(b=>b.classList.remove('sel')); btn.classList.add('sel'); };
+/* ── 일기 ── */
+let selectedMood='',entries=[];
+let editingDiaryDate=null,pastExpanded=false;
+['☀️ 맑음','🌤 보통','🌧 흐림','🌪 힘듦','🌈 특별'].forEach(m=>{
+  const btn=document.createElement('button');btn.className='mood-btn';btn.textContent=m;
+  btn.onclick=()=>{selectedMood=m;document.querySelectorAll('.mood-btn').forEach(b=>b.classList.remove('sel'));btn.classList.add('sel');};
   document.getElementById('moodRow').appendChild(btn);
 });
-
 async function initDiary(){
-  entries = (await load('diary2:all')) || [];
-  const te = entries.find(e => e.date===TK);
+  entries=(await load('diary2:all'))||[];
+  const te=entries.find(e=>e.date===TK);
   if(te){
-    document.getElementById('diaryText').value = te.text;
-    selectedMood = te.mood||'';
-    document.querySelectorAll('.mood-btn').forEach(b=>{ if(b.textContent===selectedMood) b.classList.add('sel'); });
+    document.getElementById('diaryText').value=te.text;
+    selectedMood=te.mood||'';
+    document.querySelectorAll('.mood-btn').forEach(b=>{if(b.textContent===selectedMood)b.classList.add('sel');});
   }
   renderEntries();
 }
-
 async function saveDiary(){
-  const text = document.getElementById('diaryText').value.trim(); if(!text) return;
-  const dk = editingDiaryDate||TK;
-  const idx = entries.findIndex(e=>e.date===dk);
-  const entry = { date:dk, mood:selectedMood, text };
-  if(idx>=0) entries[idx]=entry; else entries.unshift(entry);
-  await save2('diary2:all', entries);
+  const text=document.getElementById('diaryText').value.trim();if(!text)return;
+  const dk=editingDiaryDate||TK;
+  const idx=entries.findIndex(e=>e.date===dk);
+  const entry={date:dk,mood:selectedMood,text};
+  if(idx>=0)entries[idx]=entry;else entries.unshift(entry);
+  await save2('diary2:all',entries);
   if(editingDiaryDate){
+    // 수정 완료 → 오늘 상태로 복귀
     editingDiaryDate=null;
     document.getElementById('diaryDateLabel').textContent='📅 '+todayStr+' 일기';
     const te=entries.find(e=>e.date===TK);
@@ -795,11 +592,10 @@ async function saveDiary(){
     selectedMood=te?te.mood||'':'';
     document.querySelectorAll('.mood-btn').forEach(b=>b.classList.toggle('sel',b.textContent===selectedMood));
   }
-  renderEntries(); flash('saveOk');
+  renderEntries();flash('saveOk');
 }
-
 function editDiaryEntry(date){
-  const entry=entries.find(e=>e.date===date); if(!entry) return;
+  const entry=entries.find(e=>e.date===date);if(!entry)return;
   document.getElementById('diaryText').value=entry.text||'';
   selectedMood=entry.mood||'';
   document.querySelectorAll('.mood-btn').forEach(b=>b.classList.toggle('sel',b.textContent===selectedMood));
@@ -808,25 +604,23 @@ function editDiaryEntry(date){
   document.getElementById('diaryDateLabel').textContent=`📝 수정 중: ${+y}년 ${+m}월 ${+d}일`;
   document.getElementById('panel-diary').scrollIntoView({behavior:'smooth'});
 }
-
 function togglePast(){
   pastExpanded=!pastExpanded;
   document.getElementById('pastEntries').style.display=pastExpanded?'block':'none';
   document.getElementById('pastToggleBtn').textContent=pastExpanded?'지난 기록 접기 ▲':'지난 기록 보기 ▼';
 }
-
 function renderEntries(){
-  const past=entries.filter(e=>e.date!==TK), c=document.getElementById('pastEntries');
+  const past=entries.filter(e=>e.date!==TK),c=document.getElementById('pastEntries');
   const btn=document.getElementById('pastToggleBtn');
-  if(!past.length){ c.innerHTML=''; if(btn) btn.style.display='none'; return; }
-  if(btn) btn.style.display='block';
+  if(!past.length){c.innerHTML='';if(btn)btn.style.display='none';return;}
+  if(btn)btn.style.display='block';
   c.style.display=pastExpanded?'block':'none';
   c.innerHTML='<p style="font-size:15px;color:var(--ink3);font-weight:600;margin-bottom:8px;">지난 기록</p>';
   past.slice(0,5).forEach(e=>{
     const [y,m,dn]=e.date.split('-');
-    const card=document.createElement('div'); card.className='diary-card';
+    const card=document.createElement('div');card.className='diary-card';
     card.innerHTML=`<div class="diary-dlbl">${+y}년 ${+m}월 ${+dn}일 ${e.mood||''}</div><div class="diary-body">${e.text.slice(0,120)}${e.text.length>120?'…':''}</div>`;
-    const eBtn=document.createElement('button'); eBtn.className='edit-btn'; eBtn.textContent='수정';
+    const eBtn=document.createElement('button');eBtn.className='edit-btn';eBtn.textContent='수정';
     eBtn.style.marginTop='6px';
     eBtn.onclick=()=>editDiaryEntry(e.date);
     card.appendChild(eBtn);
@@ -834,146 +628,109 @@ function renderEntries(){
   });
 }
 
-/* ══════════════════════════════
-   📊 타임라인 + 팝업
-══════════════════════════════ */
-let currentModalKey = '';
-
+/* ── 타임라인 ── */
 (function(){
-  const S = new Date(2026,3,1), T = 275;
-  function p(y,m,d){ return ((new Date(y,m-1,d)-S)/86400000)/T*100; }
-  function w(s,e){ return p(...e)-p(...s); }
-
-  const mr = document.getElementById('monthRow');
-  [{l:'4월',m:4},{l:'5월',m:5},{l:'6월',m:6},{l:'7월',m:7},{l:'8월',m:8},
-   {l:'9월',m:9},{l:'10월',m:10},{l:'11월',m:11},{l:'12월',m:12}].forEach(mo=>{
+  const S=new Date(2026,3,1),T=275;
+  function p(y,m,d){return((new Date(y,m-1,d)-S)/86400000)/T*100;}
+  function w(s,e){return p(...e)-p(...s);}
+  const mr=document.getElementById('monthRow');
+  [{l:'4월',m:4},{l:'5월',m:5},{l:'6월',m:6},{l:'7월',m:7},{l:'8월',m:8},{l:'9월',m:9},{l:'10월',m:10},{l:'11월',m:11},{l:'12월',m:12}].forEach(mo=>{
     const pp=p(2026,mo.m,1);
-    const lb=document.createElement('span'); lb.className='mlabel'; lb.style.left=pp+'%'; lb.textContent=mo.l; mr.appendChild(lb);
-    const ln=document.createElement('div'); ln.style.cssText=`position:absolute;left:${pp}%;top:18px;width:1px;background:#ddd;height:230px;pointer-events:none;`; mr.appendChild(ln);
+    const lb=document.createElement('span');lb.className='mlabel';lb.style.left=pp+'%';lb.textContent=mo.l;mr.appendChild(lb);
+    const ln=document.createElement('div');ln.style.cssText=`position:absolute;left:${pp}%;top:18px;width:1px;background:#ddd;height:230px;pointer-events:none;`;mr.appendChild(ln);
   });
-
-  const programs = [
-    { key:'nabi1',    label:'🦋 나비 10기',  promo:[[2026,4,20],[2026,5,3]],   run:[[2026,5,4],[2026,7,20]],    rc:'#d4820a', rtxt:'5/4–7/20',    info:'5월 4일 ~ 7월 20일 | 11회기 (5/25 석가탄신일 휴강)', brks:[[[2026,5,25],[2026,5,25],'휴']] },
-    { key:'yeolli1',  label:'🌳 연리지 33기', promo:[[2026,6,10],[2026,6,23]],  run:[[2026,6,24],[2026,8,12]],   rc:'#3d8a4e', rtxt:'6/24–8/12',   info:'6월 24일 ~ 8월 12일 | 8회기',  brks:[] },
-    { key:'3rd',      label:'📚 3급',         promo:[[2026,7,22],[2026,8,4]],   run:[[2026,8,5],[2026,11,11]],   rc:'#5040a0', rtxt:'8/5–11/11',   info:'8월 5일 ~ 11월 11일 | 15회기', brks:[] },
-    { key:'nabi2',    label:'🦋 나비 11기',  promo:[[2026,8,13],[2026,8,26]],  run:[[2026,8,27],[2026,11,12]],  rc:'#d4820a', rtxt:'8/27–11/12',  info:'8월 27일 ~ 11월 12일 | 11회기 (9/24 추석 휴강)', brks:[[[2026,9,24],[2026,9,24],'휴']] },
-    { key:'yeolli2',  label:'🌳 연리지 34기', promo:[[2026,10,12],[2026,10,25]],run:[[2026,10,26],[2026,12,14]], rc:'#3d8a4e', rtxt:'10/26–12/14', info:'10월 26일 ~ 12월 14일 | 8회기', brks:[] },
-  ];
-
-  programs.forEach(pg => {
-    const row = document.createElement('div'); row.style.cssText='display:flex;align-items:center;margin-bottom:7px;';
-    const lb  = document.createElement('div'); lb.style.cssText='width:76px;flex-shrink:0;font-size:11px;font-weight:600;color:var(--ink2);padding-right:6px;line-height:1.3;'; lb.textContent=pg.label;
-    const tr  = document.createElement('div'); tr.style.cssText='flex:1;position:relative;height:34px;';
-
-    /* 홍보바 (점선) */
-    const pl=p(...pg.promo[0]), pw=w(pg.promo[0],pg.promo[1]);
-    const pb=document.createElement('div');
-    pb.style.cssText=`position:absolute;left:${pl}%;width:${pw}%;height:8px;top:13px;border-radius:2px;border:2px dashed ${pg.rc};box-sizing:border-box;cursor:pointer;`;
-    pb.title='홍보 기간 — 클릭하여 메모';
-    pb.onclick = () => openGanttModal(pg, '홍보');
-    tr.appendChild(pb);
-
-    /* 운영바 */
-    const rl=p(...pg.run[0]), rw=w(pg.run[0],pg.run[1]);
-    const rb=document.createElement('div');
-    rb.style.cssText=`position:absolute;left:${rl}%;width:${rw}%;height:22px;top:6px;border-radius:4px;background:${pg.rc};opacity:.85;display:flex;align-items:center;padding:0 8px;box-sizing:border-box;overflow:hidden;cursor:pointer;`;
-    rb.title=pg.label+' — 클릭하여 상세/메모';
-    const rt=document.createElement('span'); rt.style.cssText='font-size:10px;font-weight:700;color:#fff;white-space:nowrap;'; rt.textContent=pg.rtxt; rb.appendChild(rt);
-    rb.onclick = () => openGanttModal(pg, '운영');
-    tr.appendChild(rb);
-
-    /* 휴강 표시 */
+  [{label:'🦋 나비 10기',promo:[[2026,4,20],[2026,5,3]],run:[[2026,5,4],[2026,7,20]],rc:'#d4820a',tc:'#7a4a00',rtxt:'5/4–7/20',brks:[[[2026,5,25],[2026,5,25],'휴']]},
+   {label:'🌳 연리지 33기',promo:[[2026,6,10],[2026,6,23]],run:[[2026,6,24],[2026,8,12]],rc:'#3d8a4e',tc:'#1a4020',rtxt:'6/24–8/12',brks:[]},
+   {label:'📚 3급',promo:[[2026,7,22],[2026,8,4]],run:[[2026,8,5],[2026,11,11]],rc:'#5040a0',tc:'#1a1060',rtxt:'8/5–11/11',brks:[]},
+   {label:'🦋 나비 11기',promo:[[2026,8,13],[2026,8,26]],run:[[2026,8,27],[2026,11,12]],rc:'#d4820a',tc:'#7a4a00',rtxt:'8/27–11/12',brks:[[[2026,9,24],[2026,9,24],'휴']]},
+   {label:'🌳 연리지 34기',promo:[[2026,10,12],[2026,10,25]],run:[[2026,10,26],[2026,12,14]],rc:'#3d8a4e',tc:'#1a4020',rtxt:'10/26–12/14',brks:[]}
+  ].forEach(pg=>{
+    const row=document.createElement('div');row.style.cssText='display:flex;align-items:center;margin-bottom:7px;';
+    const lb=document.createElement('div');lb.style.cssText='width:76px;flex-shrink:0;font-size:11px;font-weight:600;color:var(--ink2);padding-right:6px;line-height:1.3;';lb.textContent=pg.label;
+    const tr=document.createElement('div');tr.style.cssText='flex:1;position:relative;height:34px;';
+    const pl=p(...pg.promo[0]),pw=w(pg.promo[0],pg.promo[1]);
+    const pb=document.createElement('div');pb.style.cssText=`position:absolute;left:${pl}%;width:${pw}%;height:8px;top:13px;border-radius:2px;border:2px dashed ${pg.rc};box-sizing:border-box;`;tr.appendChild(pb);
+    const rl=p(...pg.run[0]),rw=w(pg.run[0],pg.run[1]);
+    const rb=document.createElement('div');rb.style.cssText=`position:absolute;left:${rl}%;width:${rw}%;height:22px;top:6px;border-radius:4px;background:${pg.rc};opacity:.85;display:flex;align-items:center;padding:0 8px;box-sizing:border-box;overflow:hidden;`;
+    const rt=document.createElement('span');rt.style.cssText=`font-size:10px;font-weight:700;color:#fff;white-space:nowrap;`;rt.textContent=pg.rtxt;rb.appendChild(rt);tr.appendChild(rb);
     pg.brks.forEach(br=>{
-      const bl=p(...br[0]), bw=Math.max(w(br[0],br[1]),0.5);
-      const be=document.createElement('div');
-      be.style.cssText=`position:absolute;left:${bl}%;width:${Math.max(bw,1.5)}%;height:22px;top:6px;border-radius:2px;background:#fff;border:1px solid #ccc;display:flex;align-items:center;justify-content:center;font-size:9px;color:#888;z-index:5;box-sizing:border-box;`;
-      be.textContent=br[2]; tr.appendChild(be);
+      const bl=p(...br[0]),bw=Math.max(w(br[0],br[1]),0.5);
+      const be=document.createElement('div');be.style.cssText=`position:absolute;left:${bl}%;width:${Math.max(bw,1.5)}%;height:22px;top:6px;border-radius:2px;background:#fff;border:1px solid #ccc;display:flex;align-items:center;justify-content:center;font-size:9px;color:#888;z-index:5;box-sizing:border-box;`;be.textContent=br[2];tr.appendChild(be);
     });
-
-    row.appendChild(lb); row.appendChild(tr);
+    row.appendChild(lb);row.appendChild(tr);
     document.getElementById('ganttRows').appendChild(row);
   });
-
-  /* 오늘 빨간 선 (자동 날짜 계산) */
-  const now = new Date();
-  const tp  = p(now.getFullYear(), now.getMonth()+1, now.getDate());
-  const tl  = document.createElement('div');
-  tl.style.cssText = `position:absolute;left:calc(76px + ${(tp/100).toFixed(5)} * (100% - 76px));top:0;bottom:0;width:2px;background:#b02840;z-index:10;pointer-events:none;`;
-  const td2 = document.createElement('div'); td2.style.cssText='width:8px;height:8px;border-radius:50%;background:#b02840;position:absolute;top:2px;left:-3px;';
-  const tl2 = document.createElement('div'); tl2.style.cssText='position:absolute;top:2px;left:10px;font-size:10px;color:#b02840;white-space:nowrap;font-weight:700;';
-  tl2.textContent = `오늘 ${now.getMonth()+1}/${now.getDate()}`;
-  tl.appendChild(td2); tl.appendChild(tl2);
-  document.getElementById('chartArea').appendChild(tl);
+  const now=new Date();
+  const tp=p(now.getFullYear(),now.getMonth()+1,now.getDate());
+  // 버그 수정: CSS calc에서 unitless 곱셈으로 변경
+  const tl=document.createElement('div');tl.style.cssText=`position:absolute;left:calc(76px + ${(tp/100).toFixed(5)} * (100% - 76px));top:0;bottom:0;width:2px;background:#b02840;z-index:10;pointer-events:none;`;
+  const td2=document.createElement('div');td2.style.cssText='width:8px;height:8px;border-radius:50%;background:#b02840;position:absolute;top:2px;left:-3px;';
+  const tl2=document.createElement('div');tl2.style.cssText='position:absolute;top:2px;left:10px;font-size:10px;color:#b02840;white-space:nowrap;font-weight:700;';
+  tl2.textContent=`오늘 ${now.getMonth()+1}/${now.getDate()}`;
+  tl.appendChild(td2);tl.appendChild(tl2);document.getElementById('chartArea').appendChild(tl);
 })();
 
-/* ── 간트 팝업 ── */
-async function openGanttModal(pg, type){
-  currentModalKey = 'gantt:' + pg.key + ':' + type;
-  document.getElementById('modalTitle').textContent = pg.label + ' (' + type + ')';
-  document.getElementById('modalInfo').textContent  = pg.info || '';
-  const saved = await load(currentModalKey);
-  document.getElementById('modalMemo').value = saved ? saved.memo||'' : '';
-  document.getElementById('ganttModal').style.display = 'flex';
-  setTimeout(() => document.getElementById('modalMemo').focus(), 100);
+/* ── 날짜 네비게이터 ── */
+let navD=new Date();
+function shiftNav(delta){
+  navD=new Date(navD);navD.setDate(navD.getDate()+delta);
+  loadNavContent();
 }
-function closeModal(){
-  document.getElementById('ganttModal').style.display = 'none';
-  currentModalKey = '';
-}
-async function saveModalMemo(){
-  const memo = document.getElementById('modalMemo').value;
-  await save2(currentModalKey, { memo });
-  flash('modalSaveOk');
-}
-
-/* ══════════════════════════════
-   🗓 날짜 네비게이터
-══════════════════════════════ */
-let navD = new Date();
-function shiftNav(delta){ navD=new Date(navD); navD.setDate(navD.getDate()+delta); loadNavContent(); }
-
 async function loadNavContent(){
-  const y=navD.getFullYear(), m=navD.getMonth()+1, d=navD.getDate();
-  const dk = navD.toISOString().slice(0,10);
-  document.getElementById('navDateLabel').textContent = `${y}년 ${m}월 ${d}일 (${DN[navD.getDay()]})`;
-  const nc = document.getElementById('navContent');
+  const y=navD.getFullYear(),m=navD.getMonth()+1,d=navD.getDate();
+  const dk=navD.toISOString().slice(0,10);
+  document.getElementById('navDateLabel').textContent=`${y}년 ${m}월 ${d}일 (${DN[navD.getDay()]})`;
+  const nc=document.getElementById('navContent');
   nc.innerHTML='<p style="text-align:center;font-size:13px;color:var(--ink3);padding:.4rem 0;">불러오는 중...</p>';
-  const [navTasks, navDiaryAll, navInsightsAll] = await Promise.all([
-    load('tasks2:'+dk), load('diary2:all'), load('insights2:all')
+  const [navTasks,navDiaryAll,navInsightsAll]=await Promise.all([
+    load('tasks2:'+dk),
+    load('diary2:all'),
+    load('insights2:all')
   ]);
   let html='';
-  html += `<div class="nav-sec-lbl">📋 할 일</div>`;
+
+  // ── 할 일 ──
+  html+=`<div class="nav-sec-lbl">📋 할 일</div>`;
   if(navTasks&&navTasks.length){
-    const dn=navTasks.filter(t=>t.status==='done').length;
-    html += `<div style="font-size:12px;color:var(--ink3);margin-bottom:4px;">${dn}/${navTasks.length} 완료</div><div>`;
+    const done=navTasks.filter(t=>t.status==='done').length;
+    html+=`<div style="font-size:12px;color:var(--ink3);margin-bottom:4px;">${done}/${navTasks.length} 완료</div><div>`;
     navTasks.forEach(t=>{
       const cfg=STATUS_CFG[t.status]||STATUS_CFG.wait;
-      html += `<div class="nav-task-row"><span class="status-pill ${cfg.cls}" style="cursor:default;font-size:10px;">${cfg.l}</span>${t.urgent?'🚨 ':''}${t.text}</div>`;
+      html+=`<div class="nav-task-row"><span class="status-pill ${cfg.cls}" style="cursor:default;font-size:10px;">${cfg.l}</span>${t.urgent?'🚨 ':''}${t.text}</div>`;
     });
-    html += `</div>`;
-  } else { html += `<div class="nav-empty">기록 없음</div>`; }
+    html+=`</div>`;
+  } else {
+    html+=`<div class="nav-empty">기록 없음</div>`;
+  }
 
-  html += `<div class="nav-sec-lbl" style="margin-top:12px;">📔 일기</div>`;
-  const diaryEntry = navDiaryAll ? navDiaryAll.find(e=>e.date===dk) : null;
+  // ── 일기 ──
+  html+=`<div class="nav-sec-lbl" style="margin-top:12px;">📔 일기</div>`;
+  const diaryEntry=navDiaryAll?navDiaryAll.find(e=>e.date===dk):null;
   if(diaryEntry){
-    html += `<div class="nav-diary-box">${diaryEntry.mood?diaryEntry.mood+'&nbsp;&nbsp;':''}<br>${diaryEntry.text.slice(0,150)}${diaryEntry.text.length>150?'…':''}</div>`;
-  } else { html += `<div class="nav-empty">기록 없음</div>`; }
+    html+=`<div class="nav-diary-box">${diaryEntry.mood?diaryEntry.mood+'&nbsp;&nbsp;':''}<br>${diaryEntry.text.slice(0,150)}${diaryEntry.text.length>150?'…':''}</div>`;
+  } else {
+    html+=`<div class="nav-empty">기록 없음</div>`;
+  }
 
-  html += `<div class="nav-sec-lbl" style="margin-top:12px;">🌿 글감노트</div>`;
-  const dayStart = new Date(dk+'T00:00:00').getTime();
-  const dayEnd   = new Date(dk+'T23:59:59').getTime();
-  const dayInsights = navInsightsAll ? navInsightsAll.filter(e=>typeof e.id==='number'&&e.id>=dayStart&&e.id<=dayEnd) : [];
+  // ── 글감노트 (해당 날 저장된 항목: id가 그날 timestamp 범위) ──
+  html+=`<div class="nav-sec-lbl" style="margin-top:12px;">🌿 글감노트</div>`;
+  const dayStart=new Date(dk+'T00:00:00').getTime();
+  const dayEnd=new Date(dk+'T23:59:59').getTime();
+  const dayInsights=navInsightsAll?navInsightsAll.filter(e=>typeof e.id==='number'&&e.id>=dayStart&&e.id<=dayEnd):[];
   if(dayInsights.length){
-    html += '<div>';
-    dayInsights.forEach(e=>{ html+=`<div class="nav-insight-row">${e.title||'(제목 없음)'}</div>`; });
-    html += '</div>';
-  } else { html += `<div class="nav-empty">기록 없음</div>`; }
+    html+=`<div>`;
+    dayInsights.forEach(e=>{
+      html+=`<div class="nav-insight-row">${e.title||'(제목 없음)'}</div>`;
+    });
+    html+=`</div>`;
+  } else {
+    html+=`<div class="nav-empty">기록 없음</div>`;
+  }
 
-  nc.innerHTML = html;
+  nc.innerHTML=html;
 }
 
-/* ── 초기화 ── */
-initNotes(); initTasks(); initDiary(); initInsights(); loadNavContent();
+initTasks();initDiary();initInsights();loadNavContent();
 </script>
 </body>
 </html>
