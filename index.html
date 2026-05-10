@@ -29,7 +29,7 @@ body,html{background:var(--bg);}
 .root{font-family:'Segoe UI',Apple SD Gothic Neo,sans-serif;max-width:700px;margin:0 auto;padding:1rem 0 2rem;}
 
 /* 헤더 */
-.header-band{background:#FAF8F3;border-radius:14px 14px 0 0;padding:16px 22px 14px;border-bottom:2px solid #3D5C3A;}
+.header-band{background:#f6f3ed;border-radius:14px 14px 0 0;padding:16px 22px 14px;border-bottom:2px solid var(--g);}
 .h-logo{height:42px;display:block;margin-bottom:6px;}
 .h-planner-title{font-size:17px;font-weight:700;color:#3D5C3A;}
 .h-tagline{font-size:11px;color:#888;margin-top:2px;}
@@ -246,10 +246,10 @@ textarea.input-full{min-height:110px;resize:vertical;line-height:1.8;}
     <button class="nav-btn" onclick="shiftNote(1)">다음 →</button>
   </div>
 
-  <div class="note-sec-lbl">🤖 클로드</div>
+  <div class="note-sec-lbl"><img src="https://raw.githubusercontent.com/simjimind/simjimind.github.io/main/assets/icons/cooliocns%20SVG/User/User_Circle.svg" class="ci ci-sm"> 클로드</div>
   <textarea class="note-textarea" id="noteClaude" placeholder="클로드와 나눈 내용, 아이디어..."></textarea>
 
-  <div class="note-sec-lbl">✨ 제미나이</div>
+  <div class="note-sec-lbl"><img src="https://raw.githubusercontent.com/simjimind/simjimind.github.io/main/assets/icons/cooliocns%20SVG/Environment/Bulb.svg" class="ci ci-sm"> 제미나이</div>
   <textarea class="note-textarea" id="noteGemini" placeholder="제미나이와 나눈 내용..."></textarea>
 
   <div class="note-sec-lbl">💭 내 생각</div>
@@ -263,11 +263,11 @@ textarea.input-full{min-height:110px;resize:vertical;line-height:1.8;}
 
 <!-- ───────── 타임라인 ───────── -->
 <div class="panel active" id="panel-timeline">
-  <div style="font-size:12px;color:var(--ink3);margin-bottom:8px;">💡 막대를 클릭하면 메모를 달 수 있어요</div>
+  <div style="font-size:12px;color:var(--ink3);margin-bottom:8px;"><img src="https://raw.githubusercontent.com/simjimind/simjimind.github.io/main/assets/icons/cooliocns%20SVG/Environment/Bulb.svg" class="ci ci-sm"> 막대를 클릭하면 메모를 달 수 있어요</div>
   <div class="legend">
-    <span><span class="ldot" style="background:#d4820a;"></span>나비</span>
-    <span><span class="ldot" style="background:#3d8a4e;"></span>연리지</span>
-    <span><span class="ldot" style="background:#5040a0;"></span>3급</span>
+    <span><img src="https://raw.githubusercontent.com/simjimind/nabi_apply_2026/main/nabi.png" style="width:18px;height:18px;object-fit:contain;vertical-align:-4px;margin-right:4px;">나비</span>
+    <span><img src="https://raw.githubusercontent.com/simjimind/nabi_apply_2026/main/tree.png" style="width:18px;height:18px;object-fit:contain;vertical-align:-4px;margin-right:4px;">연리지</span>
+    <span><img src="https://raw.githubusercontent.com/simjimind/nabi_apply_2026/main/Flower.png" style="width:18px;height:18px;object-fit:contain;vertical-align:-4px;margin-right:4px;">3급</span>
     <span><span class="ldot" style="border:2px dashed #888;background:transparent;"></span>홍보</span>
     <span><span class="ldot" style="background:#b02840;width:4px;border-radius:2px;"></span>오늘</span>
   </div>
@@ -316,7 +316,7 @@ textarea.input-full{min-height:110px;resize:vertical;line-height:1.8;}
 
 <!-- ───────── 글감노트 ───────── -->
 <div class="panel" id="panel-insight">
-  <input class="search-input" id="insightSearch" placeholder="🔍 제목으로 검색..." oninput="renderInsights()"/>
+  <input class="search-input" id="insightSearch" placeholder="제목으로 검색..." oninput="renderInsights()"/>
   <div class="card-box">
     <div class="sec-lbl">제목 (한 문장)</div>
     <input class="input-full" id="insightTitle" placeholder="예: 모래상자에서 집을 만든 아이"/>
@@ -333,7 +333,7 @@ textarea.input-full{min-height:110px;resize:vertical;line-height:1.8;}
     <div class="sec-lbl">격려의 문장</div>
     <input class="input-full" id="insightEncourage" placeholder="이 이야기에서 건네고 싶은 격려 한 마디"/>
     <div class="img-upload-area" onclick="document.getElementById('imgInput').click()">
-      <div class="img-upload-label">📎 미술작업 · 모래놀이 이미지 첨부 (선택)</div>
+      <div class="img-upload-label"><img src="https://raw.githubusercontent.com/simjimind/simjimind.github.io/main/assets/icons/cooliocns%20SVG/Edit/Paperclip_Attechment_Tilt.svg" class="ci ci-sm"> 미술작업 · 모래놀이 이미지 첨부 (선택)</div>
       <img class="img-preview" id="imgPreview"/>
       <input type="file" id="imgInput" accept="image/*" style="display:none" onchange="previewImg(this)"/>
     </div>
@@ -401,6 +401,12 @@ function showTab(n, el){
 
 const ICO = 'https://raw.githubusercontent.com/simjimind/simjimind.github.io/main/assets/icons/cooliocns%20SVG/';
 const ic = (cat, file, cls='ci') => `<img src="${ICO}${cat}/${file}" class="${cls}" alt="">`;
+const PROG_IMG = {
+  nabi:   'https://raw.githubusercontent.com/simjimind/nabi_apply_2026/main/nabi.png',
+  tree:   'https://raw.githubusercontent.com/simjimind/nabi_apply_2026/main/tree.png',
+  flower: 'https://raw.githubusercontent.com/simjimind/nabi_apply_2026/main/Flower.png',
+};
+const pimg = (key,cls='pi') => `<img src="${PROG_IMG[key]}" class="${cls}" alt="">`;
 
 const TK  = new Date().toISOString().slice(0,10);
 const DN  = ['일','월','화','수','목','금','토'];
@@ -430,7 +436,7 @@ async function initNotes(){
 function renderNoteForm(){
   const [y,m,d] = noteViewDate.split('-');
   const isToday = noteViewDate === TK;
-  document.getElementById('noteDateLabel').textContent =
+  document.getElementById('noteDateLabel').innerHTML =
     isToday ? ic('Edit','Edit_Pencil_01.svg')+` ${todayStr} 노트` : ic('Edit','Edit_Pencil_01.svg')+` ${+y}년 ${+m}월 ${+d}일 노트`;
   const entry = noteEntries.find(e => e.date === noteViewDate) || {};
   document.getElementById('noteClaude').value = entry.claude || '';
@@ -739,7 +745,7 @@ function renderInsights(){
   const q = document.getElementById('insightSearch').value.trim().toLowerCase();
   const c = document.getElementById('insightList');
   const list = q ? insights.filter(e=>(e.title||'').toLowerCase().includes(q)) : insights;
-  if(!list.length){ c.innerHTML=`<p class="empty-hint">${q?'검색 결과 없음':'글감을 기록해봐요 🌿'}</p>`; return; }
+  if(!list.length){ c.innerHTML=`<p class="empty-hint">${q?'검색 결과 없음':'글감을 기록해봐요 '+ic('Environment','Leaf.svg','ci ci-sm')}</p>`; return; }
   c.innerHTML=`<p style="font-size:15px;color:var(--ink3);font-weight:600;margin-bottom:8px;">저장된 글감 ${list.length}개</p>`;
   list.forEach(e => {
     const ri = insights.indexOf(e);
@@ -772,9 +778,17 @@ async function delInsight(i){ insights.splice(i,1); await save2('insights2:all',
 ══════════════════════════════ */
 let selectedMood='', entries=[], editingDiaryDate=null, pastExpanded=false;
 
-['☀️ 맑음','🌤 보통','🌧 흐림','🌪 힘듦','🌈 특별'].forEach(m => {
-  const btn = document.createElement('button'); btn.className='mood-btn'; btn.textContent=m;
-  btn.onclick = () => { selectedMood=m; document.querySelectorAll('.mood-btn').forEach(b=>b.classList.remove('sel')); btn.classList.add('sel'); };
+[
+  {val:'☀️ 맑음',  icon:'Sun',        label:'맑음'},
+  {val:'🌤 보통',  icon:'Leaf',        label:'보통'},
+  {val:'🌧 흐림',  icon:'Water_Drop',  label:'흐림'},
+  {val:'🌪 힘듦',  icon:'First_Aid',   label:'힘듦'},
+  {val:'🌈 특별',  icon:'Rainbow',     label:'특별'},
+].forEach(m => {
+  const btn = document.createElement('button'); btn.className='mood-btn';
+  btn.dataset.mood = m.val;
+  btn.innerHTML = ic('Environment', m.icon+'.svg','ci ci-sm') + ' ' + m.label;
+  btn.onclick = () => { selectedMood=m.val; document.querySelectorAll('.mood-btn').forEach(b=>b.classList.remove('sel')); btn.classList.add('sel'); };
   document.getElementById('moodRow').appendChild(btn);
 });
 
@@ -784,7 +798,7 @@ async function initDiary(){
   if(te){
     document.getElementById('diaryText').value = te.text;
     selectedMood = te.mood||'';
-    document.querySelectorAll('.mood-btn').forEach(b=>{ if(b.textContent===selectedMood) b.classList.add('sel'); });
+    document.querySelectorAll('.mood-btn').forEach(b=>{ if(b.dataset.mood===selectedMood) b.classList.add('sel'); });
   }
   renderEntries();
 }
@@ -802,7 +816,7 @@ async function saveDiary(){
     const te=entries.find(e=>e.date===TK);
     document.getElementById('diaryText').value=te?te.text:'';
     selectedMood=te?te.mood||'':'';
-    document.querySelectorAll('.mood-btn').forEach(b=>b.classList.toggle('sel',b.textContent===selectedMood));
+    document.querySelectorAll('.mood-btn').forEach(b=>b.classList.toggle('sel',b.dataset.mood===selectedMood));
   }
   renderEntries(); flash('saveOk');
 }
@@ -811,7 +825,7 @@ function editDiaryEntry(date){
   const entry=entries.find(e=>e.date===date); if(!entry) return;
   document.getElementById('diaryText').value=entry.text||'';
   selectedMood=entry.mood||'';
-  document.querySelectorAll('.mood-btn').forEach(b=>b.classList.toggle('sel',b.textContent===selectedMood));
+  document.querySelectorAll('.mood-btn').forEach(b=>b.classList.toggle('sel',b.dataset.mood===selectedMood));
   editingDiaryDate=date;
   const [y,m,d]=date.split('-');
   document.getElementById('diaryDateLabel').innerHTML=ic('Edit','Edit_Pencil_01.svg')+` 수정 중: ${+y}년 ${+m}월 ${+d}일`;
@@ -854,7 +868,7 @@ let currentModalKey = '';
   function w(s,e){ return p(...e)-p(...s); }
 
   const mr = document.getElementById('monthRow');
-  [{l:'4월',m:4},{l:'5월',m:5},{l:'6월',m:6},{l:'7월',m:7},{l:'8월',m:8},
+  [{l:'5월',m:5},{l:'6월',m:6},{l:'7월',m:7},{l:'8월',m:8},
    {l:'9월',m:9},{l:'10월',m:10},{l:'11월',m:11},{l:'12월',m:12}].forEach(mo=>{
     const pp=p(2026,mo.m,1);
     const lb=document.createElement('span'); lb.className='mlabel'; lb.style.left=pp+'%'; lb.textContent=mo.l; mr.appendChild(lb);
@@ -862,16 +876,16 @@ let currentModalKey = '';
   });
 
   const programs = [
-    { key:'nabi1',    label:'🦋 나비 10기',  promo:[[2026,4,20],[2026,5,3]],   run:[[2026,5,4],[2026,7,20]],    rc:'#d4820a', rtxt:'5/4–7/20',    info:'5월 4일 ~ 7월 20일 | 11회기 (5/25 석가탄신일 휴강)', brks:[[[2026,5,25],[2026,5,25],'휴']] },
-    { key:'yeolli1',  label:'🌳 연리지 33기', promo:[[2026,6,10],[2026,6,23]],  run:[[2026,6,24],[2026,8,12]],   rc:'#3d8a4e', rtxt:'6/24–8/12',   info:'6월 24일 ~ 8월 12일 | 8회기',  brks:[] },
-    { key:'3rd',      label:'📚 3급',         promo:[[2026,7,22],[2026,8,4]],   run:[[2026,8,5],[2026,11,11]],   rc:'#5040a0', rtxt:'8/5–11/11',   info:'8월 5일 ~ 11월 11일 | 15회기', brks:[] },
-    { key:'nabi2',    label:'🦋 나비 11기',  promo:[[2026,8,13],[2026,8,26]],  run:[[2026,8,27],[2026,11,12]],  rc:'#d4820a', rtxt:'8/27–11/12',  info:'8월 27일 ~ 11월 12일 | 11회기 (9/24 추석 휴강)', brks:[[[2026,9,24],[2026,9,24],'휴']] },
-    { key:'yeolli2',  label:'🌳 연리지 34기', promo:[[2026,10,12],[2026,10,25]],run:[[2026,10,26],[2026,12,14]], rc:'#3d8a4e', rtxt:'10/26–12/14', info:'10월 26일 ~ 12월 14일 | 8회기', brks:[] },
+    { key:'nabi1',    label:'나비 10기',   pi:'nabi',   promo:[[2026,4,20],[2026,5,3]],   run:[[2026,5,4],[2026,7,20]],    rc:'#E8A870', rtxt:'5/4–7/20',    info:'5월 4일 ~ 7월 20일 | 11회기 (5/25 석가탄신일 휴강)', brks:[[[2026,5,25],[2026,5,25],'휴']] },
+    { key:'yeolli1',  label:'연리지 33기', pi:'tree',   promo:[[2026,6,10],[2026,6,23]],  run:[[2026,6,24],[2026,8,12]],   rc:'#7AAE88', rtxt:'6/24–8/12',   info:'6월 24일 ~ 8월 12일 | 8회기',  brks:[] },
+    { key:'3rd',      label:'3급',         pi:'flower', promo:[[2026,7,22],[2026,8,4]],   run:[[2026,8,5],[2026,11,11]],   rc:'#9B8ECC', rtxt:'8/5–11/11',   info:'8월 5일 ~ 11월 11일 | 15회기', brks:[] },
+    { key:'nabi2',    label:'나비 11기',   pi:'nabi',   promo:[[2026,8,13],[2026,8,26]],  run:[[2026,8,27],[2026,11,12]],  rc:'#E8A870', rtxt:'8/27–11/12',  info:'8월 27일 ~ 11월 12일 | 11회기 (9/24 추석 휴강)', brks:[[[2026,9,24],[2026,9,24],'휴']] },
+    { key:'yeolli2',  label:'연리지 34기', pi:'tree',   promo:[[2026,10,12],[2026,10,25]],run:[[2026,10,26],[2026,12,14]], rc:'#7AAE88', rtxt:'10/26–12/14', info:'10월 26일 ~ 12월 14일 | 8회기', brks:[] },
   ];
 
   programs.forEach(pg => {
     const row = document.createElement('div'); row.style.cssText='display:flex;align-items:center;margin-bottom:7px;';
-    const lb  = document.createElement('div'); lb.style.cssText='width:76px;flex-shrink:0;font-size:11px;font-weight:600;color:var(--ink2);padding-right:6px;line-height:1.3;'; lb.textContent=pg.label;
+    const lb  = document.createElement('div'); lb.style.cssText='width:96px;flex-shrink:0;font-size:11px;font-weight:600;color:var(--ink2);padding-right:6px;line-height:1.3;display:flex;align-items:center;gap:4px;'; lb.innerHTML=`<img src="${PROG_IMG[pg.pi]}" style="width:18px;height:18px;object-fit:contain;flex-shrink:0;">${pg.label}`;
     const tr  = document.createElement('div'); tr.style.cssText='flex:1;position:relative;height:34px;';
 
     /* 홍보바 (점선) */
@@ -887,7 +901,7 @@ let currentModalKey = '';
     const rb=document.createElement('div');
     rb.style.cssText=`position:absolute;left:${rl}%;width:${rw}%;height:22px;top:6px;border-radius:4px;background:${pg.rc};opacity:.85;display:flex;align-items:center;padding:0 8px;box-sizing:border-box;overflow:hidden;cursor:pointer;`;
     rb.title=pg.label+' — 클릭하여 상세/메모';
-    const rt=document.createElement('span'); rt.style.cssText='font-size:10px;font-weight:700;color:#fff;white-space:nowrap;'; rt.textContent=pg.rtxt; rb.appendChild(rt);
+    const rt=document.createElement('span'); rt.style.cssText='font-size:10px;font-weight:700;color:var(--g-dk);white-space:nowrap;'; rt.textContent=pg.rtxt; rb.appendChild(rt);
     rb.onclick = () => openGanttModal(pg, '운영');
     tr.appendChild(rb);
 
@@ -918,7 +932,7 @@ let currentModalKey = '';
 /* ── 간트 팝업 ── */
 async function openGanttModal(pg, type){
   currentModalKey = 'gantt:' + pg.key + ':' + type;
-  document.getElementById('modalTitle').textContent = pg.label + ' (' + type + ')';
+  document.getElementById('modalTitle').innerHTML = `<img src="${PROG_IMG[pg.pi]}" style="width:20px;height:20px;object-fit:contain;vertical-align:-4px;margin-right:5px;">${pg.label} (${type})`;
   document.getElementById('modalInfo').textContent  = pg.info || '';
   const saved = await load(currentModalKey);
   document.getElementById('modalMemo').value = saved ? saved.memo||'' : '';
@@ -951,7 +965,7 @@ async function loadNavContent(){
     load('tasks2:'+dk), load('diary2:all'), load('insights2:all')
   ]);
   let html='';
-  html += `<div class="nav-sec-lbl">📋 할 일</div>`;
+  html += `<div class="nav-sec-lbl">${ic('Edit','List_Checklist.svg','ci ci-sm')} 할 일</div>`;
   if(navTasks&&navTasks.length){
     const dn=navTasks.filter(t=>t.status==='done').length;
     html += `<div style="font-size:12px;color:var(--ink3);margin-bottom:4px;">${dn}/${navTasks.length} 완료</div><div>`;
@@ -962,13 +976,13 @@ async function loadNavContent(){
     html += `</div>`;
   } else { html += `<div class="nav-empty">기록 없음</div>`; }
 
-  html += `<div class="nav-sec-lbl" style="margin-top:12px;">📔 일기</div>`;
+  html += `<div class="nav-sec-lbl" style="margin-top:12px;">${ic('Edit','Edit_Pencil_Line_01.svg','ci ci-sm')} 일기</div>`;
   const diaryEntry = navDiaryAll ? navDiaryAll.find(e=>e.date===dk) : null;
   if(diaryEntry){
     html += `<div class="nav-diary-box">${diaryEntry.mood?diaryEntry.mood+'&nbsp;&nbsp;':''}<br>${diaryEntry.text.slice(0,150)}${diaryEntry.text.length>150?'…':''}</div>`;
   } else { html += `<div class="nav-empty">기록 없음</div>`; }
 
-  html += `<div class="nav-sec-lbl" style="margin-top:12px;">🌿 글감노트</div>`;
+  html += `<div class="nav-sec-lbl" style="margin-top:12px;">${ic('Environment','Leaf.svg','ci ci-sm')} 글감노트</div>`;
   const dayStart = new Date(dk+'T00:00:00').getTime();
   const dayEnd   = new Date(dk+'T23:59:59').getTime();
   const dayInsights = navInsightsAll ? navInsightsAll.filter(e=>typeof e.id==='number'&&e.id>=dayStart&&e.id<=dayEnd) : [];
