@@ -226,9 +226,13 @@ textarea.input-full{min-height:110px;resize:vertical;line-height:1.8;}
 
 <div class="root">
 <div class="header-band">
-  <img src="simji_logo.png" alt="심리상담연구소 심지" class="h-logo">
-  <div class="h-planner-title">2026 하반기 운영 플래너</div>
-  <div class="h-tagline">지금 여기 우리의 마음자리</div>
+  <div style="display:flex;align-items:center;justify-content:space-between;">
+    <img src="simji_logo.png" alt="심리상담연구소 심지" class="h-logo" style="margin-bottom:0;">
+    <div style="text-align:right;">
+      <div class="h-planner-title">2026 하반기 운영 플래너</div>
+      <div class="h-tagline">지금 여기 우리의 마음자리</div>
+    </div>
+  </div>
 </div>
 <div class="tabs">
   <button class="tab active" data-c="g" onclick="showTab('timeline',this)">타임라인</button>
@@ -269,7 +273,7 @@ textarea.input-full{min-height:110px;resize:vertical;line-height:1.8;}
     <span><img src="https://raw.githubusercontent.com/simjimind/nabi_apply_2026/main/tree.png" style="width:18px;height:18px;object-fit:contain;vertical-align:-4px;margin-right:4px;">연리지</span>
     <span><img src="https://raw.githubusercontent.com/simjimind/nabi_apply_2026/main/Flower.png" style="width:18px;height:18px;object-fit:contain;vertical-align:-4px;margin-right:4px;">3급</span>
     <span><span class="ldot" style="border:2px dashed #888;background:transparent;"></span>홍보</span>
-    <span><span class="ldot" style="background:#b02840;width:4px;border-radius:2px;"></span>오늘</span>
+    <span><span class="ldot" style="background:#C08090;width:4px;border-radius:2px;"></span>오늘</span>
   </div>
   <div class="gantt-bg" id="chartArea" style="position:relative;">
     <div style="display:flex;margin-bottom:4px;">
@@ -307,7 +311,7 @@ textarea.input-full{min-height:110px;resize:vertical;line-height:1.8;}
     <span style="font-size:11px;color:var(--ink3);align-self:center;">← 상태 클릭 변경 &nbsp;|&nbsp; <img src="https://raw.githubusercontent.com/simjimind/simjimind.github.io/main/assets/icons/cooliocns%20SVG/Warning/Warning.svg" class="ci ci-sm ci-warn"> 긴급 &nbsp;|&nbsp; <img src="https://raw.githubusercontent.com/simjimind/simjimind.github.io/main/assets/icons/cooliocns%20SVG/Edit/Edit_Pencil_01.svg" class="ci ci-sm"> 메모</span>
   </div>
   <ul id="taskList" style="list-style:none;"></ul>
-  <p class="empty-hint" id="emptyHint" style="display:none;">할 일을 추가해봐요 🌱</p>
+  <p class="empty-hint" id="emptyHint" style="display:none;">할 일을 추가해봐요 <img src="https://raw.githubusercontent.com/simjimind/simjimind.github.io/main/assets/icons/cooliocns%20SVG/Environment/Leaf.svg" class="ci ci-sm"></p>
   <div class="add-row">
     <input type="text" id="taskInput" placeholder="새 할 일 입력 후 엔터" maxlength="80"/>
     <button class="btn-pri" onclick="addTask()">추가</button>
@@ -765,7 +769,7 @@ function renderInsights(){
       </div>
       ${tags.length?`<div class="insight-tags-wrap">${tags.join('')}</div>`:''}
       ${e.text?`<div class="insight-body">${e.text.slice(0,250)}${e.text.length>250?'…':''}</div>`:''}
-      ${e.encourage?`<div class="insight-encourage">💚 ${e.encourage}</div>`:''}
+      ${e.encourage?`<div class="insight-encourage">${ic('Interface','Heart_01.svg','ci ci-sm')} ${e.encourage}</div>`:''}
       ${e.img?`<img class="insight-img" src="${e.img}"/>`:''}
     `;
     c.appendChild(card);
@@ -921,9 +925,9 @@ let currentModalKey = '';
   const now = new Date();
   const tp  = p(now.getFullYear(), now.getMonth()+1, now.getDate());
   const tl  = document.createElement('div');
-  tl.style.cssText = `position:absolute;left:calc(76px + ${(tp/100).toFixed(5)} * (100% - 76px));top:0;bottom:0;width:2px;background:#b02840;z-index:10;pointer-events:none;`;
-  const td2 = document.createElement('div'); td2.style.cssText='width:8px;height:8px;border-radius:50%;background:#b02840;position:absolute;top:2px;left:-3px;';
-  const tl2 = document.createElement('div'); tl2.style.cssText='position:absolute;top:2px;left:10px;font-size:10px;color:#b02840;white-space:nowrap;font-weight:700;';
+  tl.style.cssText = `position:absolute;left:calc(76px + ${(tp/100).toFixed(5)} * (100% - 76px));top:0;bottom:0;width:2px;background:#C08090;z-index:10;pointer-events:none;`;
+  const td2 = document.createElement('div'); td2.style.cssText='width:8px;height:8px;border-radius:50%;background:#C08090;position:absolute;top:2px;left:-3px;';
+  const tl2 = document.createElement('div'); tl2.style.cssText='position:absolute;top:2px;left:10px;font-size:10px;color:#C08090;white-space:nowrap;font-weight:700;';
   tl2.textContent = `오늘 ${now.getMonth()+1}/${now.getDate()}`;
   tl.appendChild(td2); tl.appendChild(tl2);
   document.getElementById('chartArea').appendChild(tl);
