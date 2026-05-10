@@ -379,7 +379,7 @@ window.storage = (function(){
       try { localStorage.setItem(key, value); } catch(_){}
       if (useGAS()) {
         try {
-          await fetch(GAS_URL, { method:'POST', body: JSON.stringify({key, value}) });
+          await fetch(GAS_URL, { method:'POST', body: JSON.stringify({key, value}), mode:'no-cors' });
         } catch(e) { console.warn('[storage] GAS POST 실패 (localStorage에는 저장됨):', e); }
       }
     }
